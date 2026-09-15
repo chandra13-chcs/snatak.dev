@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>snātak.dev | Modern Software Architecture & Digital Craft</title>
   
-  <!-- Premium Google Fonts -->
+  <!-- Premium Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700&family=Syne:wght@700;800&display=swap" rel="stylesheet">
@@ -15,62 +15,67 @@
 
   <style>
     /* =========================================
-       THEME PALETTE: AUTHENTIC RICH CREAM & COFFEE
+       THEME VARIABLES: SOLID NAVY BLUE CARDS & TABS
     ========================================= */
     :root[data-theme="dark"] {
-      --bg-page: #0C0A09;              /* Deep Warm Obsidian */
-      --bg-surface: #14110F;           /* Roasted Coffee Surface */
+      --bg-page: #080A0E;              
+      --bg-surface: #0E131C;
       
-      --bg-header: #080706;
-      --header-border: rgba(199, 138, 88, 0.22);
-      --header-shadow: 0 4px 20px rgba(0, 0, 0, 0.7);
+      --bg-header: #05080E;
+      --header-border: rgba(56, 189, 248, 0.25);
+      --header-shadow: 0 4px 25px rgba(0, 0, 0, 0.8);
       
-      --card-bg: linear-gradient(160deg, #1C1410 0%, #100B08 100%);
-      --card-border: rgba(199, 138, 88, 0.22);
-      --card-hover-border: #C78A58;
+      --card-navy-bg: #0A192F;
+      --card-navy-border: #1E3A8A;
+      --card-hover-border: #38BDF8;
       
-      --text-main: #FBF7F0;
-      --text-muted: #9E948A;
-      --text-card-head: #FFFFFF;
-      --text-card-body: #D4C8BC;
+      --text-main: #F2F8F8;
+      --text-muted: #8E9FAA;
       
-      --coffee-accent: #C78A58;
-      --coffee-glow: rgba(199, 138, 88, 0.25);
-      --badge-bg: rgba(199, 138, 88, 0.12);
-      --badge-border: rgba(199, 138, 88, 0.35);
+      --card-text-title: #FFFFFF;
+      --card-text-body: #CBD5E1;
       
-      --input-bg: rgba(255, 255, 255, 0.04);
-      --input-border: rgba(255, 255, 255, 0.12);
-      --footer-bg: #070605;
+      --accent-cyan: #38BDF8;
+      --accent-teal: #2DD4BF;
+      --navy-glow: rgba(56, 189, 248, 0.25);
+      
+      --tab-navy-bg: #0F274A;
+      --tab-navy-border: #2563EB;
+      
+      --input-bg: #071322;
+      --input-border: #1E3A8A;
+      --footer-bg: #030712;
       --logo-filter: invert(1);
     }
 
     :root[data-theme="light"] {
-      /* Authentic Muted Cream Tone - NOT blindingly white */
-      --bg-page: #F3ECE4;              /* Soft Vintage Almond Cream */
-      --bg-surface: #E8DFD5;           /* Matte Architectural Cream */
+      --bg-page: #F0F4F8;              
+      --bg-surface: #E2E8F0;
       
-      --bg-header: #12100E;            /* Bold Luxury Dark Bar */
-      --header-border: #2C241D;
-      --header-shadow: 0 6px 25px rgba(28, 20, 16, 0.15);
+      --bg-header: #0A192F;
+      --header-border: #1E3A8A;
+      --header-shadow: 0 6px 25px rgba(10, 25, 47, 0.18);
       
-      --card-bg: #FAF5EE;
-      --card-border: #DBCFBF;
-      --card-hover-border: #8A532B;
+      --card-navy-bg: #0B1E38;
+      --card-navy-border: #1E40AF;
+      --card-hover-border: #38BDF8;
       
-      --text-main: #181411;
-      --text-muted: #695E55;
-      --text-card-head: #181411;
-      --text-card-body: #4A4036;
+      --text-main: #0F172A;
+      --text-muted: #475569;
       
-      --coffee-accent: #8A532B;
-      --coffee-glow: rgba(138, 83, 43, 0.15);
-      --badge-bg: #E8DDD2;
-      --badge-border: #D1C2B2;
+      --card-text-title: #FFFFFF;
+      --card-text-body: #E2E8F0;
+      
+      --accent-cyan: #38BDF8;
+      --accent-teal: #2DD4BF;
+      --navy-glow: rgba(30, 58, 138, 0.3);
+      
+      --tab-navy-bg: #0F2A4A;
+      --tab-navy-border: #3B82F6;
       
       --input-bg: #FFFFFF;
-      --input-border: #D1C2B2;
-      --footer-bg: #12100E;
+      --input-border: #94A3B8;
+      --footer-bg: #0A192F;
       --logo-filter: invert(1);
     }
 
@@ -120,7 +125,7 @@
     }
 
     /* =========================================
-       1. HEADER (ELEVATED SOLID LUXURY BAR)
+       1. HEADER (SOLID NAVY BAR)
     ========================================= */
     header {
       position: sticky;
@@ -153,7 +158,8 @@
       justify-content: center;
       background: #000;
       border-radius: 8px;
-      border: 1px solid rgba(199, 138, 88, 0.4);
+      border: 1.5px solid var(--accent-cyan);
+      box-shadow: 0 0 12px var(--navy-glow);
     }
 
     .brand-emblem-img {
@@ -173,7 +179,7 @@
     }
 
     .brand-title-exact .dot-dev {
-      color: var(--coffee-accent);
+      color: var(--accent-cyan);
     }
 
     .nav-links {
@@ -183,7 +189,7 @@
     }
 
     .nav-links a {
-      color: #D1C7BD;
+      color: #E2E8F0;
       text-decoration: none;
       font-weight: 600;
       font-size: 0.9rem;
@@ -191,7 +197,7 @@
     }
 
     .nav-links a:hover {
-      color: var(--coffee-accent);
+      color: var(--accent-cyan);
     }
 
     .nav-actions {
@@ -201,8 +207,8 @@
     }
 
     .icon-btn {
-      background: rgba(255, 255, 255, 0.08);
-      border: 1px solid rgba(255, 255, 255, 0.15);
+      background: var(--tab-navy-bg);
+      border: 1px solid var(--tab-navy-border);
       color: #FFFFFF;
       padding: 7px;
       border-radius: 50%;
@@ -210,12 +216,13 @@
       display: flex;
       align-items: center;
       justify-content: center;
-      transition: transform 0.2s, border-color 0.2s;
+      transition: transform 0.2s, border-color 0.2s, box-shadow 0.2s;
     }
 
     .icon-btn:hover {
       transform: scale(1.08);
-      border-color: var(--coffee-accent);
+      border-color: var(--accent-cyan);
+      box-shadow: 0 0 12px var(--navy-glow);
     }
 
     .mobile-menu-btn {
@@ -229,11 +236,11 @@
       left: 0;
       width: 100%;
       background: var(--bg-header);
-      border-bottom: 2px solid var(--coffee-accent);
+      border-bottom: 2px solid var(--accent-cyan);
       padding: 1.2rem 1.5rem;
       flex-direction: column;
       gap: 0.9rem;
-      box-shadow: 0 12px 30px rgba(0,0,0,0.5);
+      box-shadow: 0 12px 30px rgba(0,0,0,0.6);
       z-index: 99;
     }
 
@@ -251,20 +258,20 @@
     }
 
     .mobile-nav-drawer a:hover {
-      color: var(--coffee-accent);
+      color: var(--accent-cyan);
     }
 
     /* Buttons */
     .btn-primary {
-      background: linear-gradient(135deg, #2A1A12 0%, #120B07 100%);
-      color: #FBF7F0 !important;
+      background: linear-gradient(135deg, #1E40AF 0%, #0369A1 100%);
+      color: #FFFFFF !important;
       padding: 0.65rem 1.4rem;
       border-radius: 999px;
       font-weight: 600;
       font-size: 0.88rem;
       text-decoration: none;
-      border: 1px solid var(--coffee-accent);
-      box-shadow: 0 4px 14px var(--coffee-glow);
+      border: 1px solid var(--accent-cyan);
+      box-shadow: 0 4px 18px var(--navy-glow);
       transition: all 0.25s ease;
       display: inline-flex;
       align-items: center;
@@ -272,22 +279,18 @@
       cursor: pointer;
     }
 
-    :root[data-theme="light"] .btn-primary {
-      background: #141210;
-      border-color: #141210;
-    }
-
     .btn-primary:hover {
+      background: linear-gradient(135deg, #2563EB 0%, #0284C7 100%);
       transform: translateY(-2px);
-      box-shadow: 0 6px 18px var(--coffee-glow);
+      box-shadow: 0 6px 22px rgba(56, 189, 248, 0.45);
     }
 
     .btn-secondary {
       padding: 0.65rem 1.4rem;
       border-radius: 999px;
-      border: 1px solid var(--card-border);
-      background: var(--input-bg);
-      color: var(--text-main);
+      border: 1px solid var(--tab-navy-border);
+      background: var(--tab-navy-bg);
+      color: #FFFFFF;
       text-decoration: none;
       font-weight: 600;
       font-size: 0.88rem;
@@ -298,11 +301,12 @@
     }
 
     .btn-secondary:hover {
-      border-color: var(--coffee-accent);
+      border-color: var(--accent-cyan);
+      box-shadow: 0 0 14px var(--navy-glow);
     }
 
     .btn-whatsapp {
-      background: #128C7E;
+      background: linear-gradient(135deg, #059669 0%, #0D9488 100%);
       color: #FFF !important;
       padding: 0.72rem 1.5rem;
       border-radius: 999px;
@@ -314,19 +318,18 @@
       justify-content: center;
       gap: 8px;
       white-space: nowrap;
-      border: none;
-      box-shadow: 0 4px 14px rgba(18, 140, 126, 0.25);
+      border: 1px solid rgba(45, 212, 191, 0.4);
+      box-shadow: 0 4px 16px rgba(16, 185, 129, 0.3);
       transition: all 0.25s ease;
     }
 
     .btn-whatsapp:hover {
-      background: #075E54;
       transform: translateY(-2px);
-      box-shadow: 0 6px 18px rgba(18, 140, 126, 0.4);
+      box-shadow: 0 6px 20px rgba(16, 185, 129, 0.45);
     }
 
     /* =========================================
-       2. HERO (COMPACT & CRISP)
+       2. HERO SECTION
     ========================================= */
     .hero {
       text-align: center;
@@ -337,14 +340,15 @@
       display: inline-flex;
       align-items: center;
       gap: 6px;
-      padding: 5px 14px;
-      background: var(--badge-bg);
-      border: 1px solid var(--badge-border);
+      padding: 6px 18px;
+      background: var(--tab-navy-bg);
+      border: 1.5px solid var(--accent-cyan);
       border-radius: 999px;
-      color: var(--coffee-accent);
-      font-size: 0.8rem;
-      font-weight: 600;
+      color: #FFFFFF;
+      font-size: 0.82rem;
+      font-weight: 700;
       margin-bottom: 1.1rem;
+      box-shadow: 0 0 16px var(--navy-glow);
     }
 
     .hero h1 {
@@ -355,7 +359,9 @@
     }
 
     .hero h1 span {
-      color: var(--coffee-accent);
+      background: linear-gradient(135deg, #38BDF8 0%, #60A5FA 50%, #2DD4BF 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
     }
 
     .hero p {
@@ -374,135 +380,150 @@
     }
 
     /* =========================================
-       3. END-TO-END CAPABILITIES: SLIDES CAROUSEL
+       3. SLIDES & TABS: RESPONSIVE CAROUSEL
     ========================================= */
     .carousel-header-controls {
       display: flex;
       justify-content: space-between;
       align-items: flex-end;
       margin-bottom: 1.5rem;
+      gap: 1rem;
     }
 
     .carousel-btn-group {
       display: flex;
       gap: 10px;
+      flex-shrink: 0;
     }
 
     .slide-arrow-btn {
-      width: 42px;
-      height: 42px;
+      width: 44px;
+      height: 44px;
       border-radius: 50%;
-      background: var(--card-bg);
-      border: 1px solid var(--card-border);
-      color: var(--text-main);
+      background: var(--card-navy-bg);
+      border: 1.5px solid var(--accent-cyan);
+      color: #FFFFFF;
       display: flex;
       align-items: center;
       justify-content: center;
       cursor: pointer;
       transition: all 0.25s ease;
+      box-shadow: 0 4px 14px var(--navy-glow);
     }
 
     .slide-arrow-btn:hover {
-      background: var(--coffee-accent);
+      background: #2563EB;
       color: #FFF;
-      border-color: var(--coffee-accent);
-      transform: scale(1.06);
+      border-color: #FFF;
+      transform: scale(1.08);
+      box-shadow: 0 6px 20px rgba(56, 189, 248, 0.5);
     }
 
+    /* Viewport with comfortable margins */
     .slides-viewport {
       overflow-x: auto;
       scroll-behavior: smooth;
-      scrollbar-width: none; /* Firefox */
-      -ms-overflow-style: none; /* IE */
-      padding: 10px 4px 20px 4px;
+      scrollbar-width: none;
+      -ms-overflow-style: none;
+      padding: 12px 1rem 28px 1rem;
+      margin: 0 -1rem;
+      scroll-snap-type: x mandatory;
+      -webkit-overflow-scrolling: touch;
     }
 
     .slides-viewport::-webkit-scrollbar {
-      display: none; /* Chrome/Safari */
+      display: none;
     }
 
     .slides-track {
       display: flex;
       gap: 1.4rem;
       width: max-content;
+      padding-right: 1.5rem;
     }
 
+    /* Slide Card */
     .slide-card {
-      width: 290px;
+      width: 300px;
       flex-shrink: 0;
-      background: var(--card-bg);
-      border: 1px solid var(--card-border);
-      border-radius: 18px;
-      padding: 2rem 1.6rem;
-      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.06);
+      background-color: var(--card-navy-bg) !important;
+      border: 1.5px solid var(--card-navy-border);
+      border-radius: 20px;
+      padding: 2.2rem 1.8rem;
+      box-shadow: 0 12px 30px rgba(10, 25, 47, 0.4);
       transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
       display: flex;
       flex-direction: column;
       justify-content: space-between;
+      scroll-snap-align: start;
     }
 
     .slide-card:hover {
       transform: translateY(-8px) scale(1.02);
-      border-color: var(--coffee-accent);
-      box-shadow: 0 18px 36px var(--coffee-glow);
+      border-color: var(--card-hover-border);
+      box-shadow: 0 20px 42px var(--navy-glow);
     }
 
     .service-icon {
-      width: 44px;
-      height: 44px;
-      border-radius: 12px;
-      background: var(--badge-bg);
-      border: 1px solid var(--badge-border);
-      color: var(--coffee-accent);
+      width: 48px;
+      height: 48px;
+      border-radius: 14px;
+      background: #0F274A;
+      border: 1.5px solid var(--accent-cyan);
+      color: var(--accent-cyan);
       display: flex;
       align-items: center;
       justify-content: center;
-      margin-bottom: 1.2rem;
+      margin-bottom: 1.3rem;
       transition: transform 0.3s ease;
+      box-shadow: 0 0 15px var(--navy-glow);
     }
 
     .slide-card:hover .service-icon {
-      transform: rotate(6deg) scale(1.1);
+      transform: rotate(8deg) scale(1.1);
+      background: #2563EB;
+      color: #FFFFFF;
+      border-color: #FFFFFF;
     }
 
     .service-title {
-      font-size: 1.2rem;
-      margin-bottom: 0.5rem;
-      color: var(--text-card-head);
+      font-size: 1.25rem;
+      margin-bottom: 0.6rem;
+      color: var(--card-text-title) !important;
+      font-weight: 700;
     }
 
     .service-desc {
-      color: var(--text-card-body);
-      font-size: 0.88rem;
-      line-height: 1.55;
+      color: var(--card-text-body) !important;
+      font-size: 0.92rem;
+      line-height: 1.6;
     }
 
     /* =========================================
-       4. FEATURED PROJECTS (DYNAMIC MOTION)
+       4. FEATURED PROJECTS
     ========================================= */
     .projects-grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
       gap: 1.8rem;
-      perspective: 1000px;
     }
 
     .project-card {
-      background: var(--card-bg);
-      border: 1px solid var(--card-border);
-      border-radius: 18px;
+      background-color: var(--card-navy-bg) !important;
+      border: 1.5px solid var(--card-navy-border);
+      border-radius: 20px;
       padding: 2.2rem;
       display: flex;
       flex-direction: column;
       justify-content: space-between;
-      box-shadow: 0 10px 28px rgba(0, 0, 0, 0.06);
+      box-shadow: 0 12px 32px rgba(10, 25, 47, 0.35);
       transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
     }
 
     .project-card:hover {
       transform: translateY(-8px) scale(1.015);
-      border-color: var(--coffee-accent);
-      box-shadow: 0 20px 45px var(--coffee-glow);
+      border-color: var(--card-hover-border);
+      box-shadow: 0 20px 48px var(--navy-glow);
     }
 
     .card-top {
@@ -513,15 +534,15 @@
     }
 
     .project-tag {
-      font-size: 0.72rem;
+      font-size: 0.74rem;
       text-transform: uppercase;
       font-weight: 700;
       letter-spacing: 0.06em;
-      padding: 4px 10px;
-      border-radius: 6px;
-      background: rgba(46, 196, 107, 0.15);
-      color: #38bdf8;
-      border: 1px solid rgba(56, 189, 248, 0.3);
+      padding: 5px 12px;
+      border-radius: 999px;
+      background: #0F274A;
+      color: var(--accent-cyan);
+      border: 1px solid var(--accent-cyan);
     }
 
     .project-tech {
@@ -532,34 +553,35 @@
     }
 
     .tech-pill {
-      background: var(--input-bg);
-      border: 1px solid var(--card-border);
-      font-size: 0.75rem;
-      padding: 3px 10px;
+      background: #0F2A4A;
+      border: 1px solid var(--card-navy-border);
+      font-size: 0.76rem;
+      font-weight: 600;
+      padding: 4px 11px;
       border-radius: 999px;
-      color: var(--text-muted);
+      color: #93C5FD;
     }
 
     .project-link-btn {
       display: inline-flex;
       align-items: center;
       gap: 8px;
-      color: var(--text-main);
+      color: #FFFFFF !important;
       text-decoration: none;
-      font-size: 0.92rem;
+      font-size: 0.94rem;
       font-weight: 600;
-      border-top: 1px solid var(--card-border);
-      padding-top: 1rem;
+      border-top: 1px solid rgba(255, 255, 255, 0.1);
+      padding-top: 1.1rem;
       transition: color 0.2s, gap 0.2s;
     }
 
     .project-link-btn:hover {
-      color: var(--coffee-accent);
+      color: var(--accent-cyan) !important;
       gap: 12px;
     }
 
     /* =========================================
-       5. OUR 5-STEP PROCESS (HIGHLY ANIMATED PIPELINE)
+       5. 5-STEP PROCESS: NAVY PIPELINE
     ========================================= */
     .process-pipeline {
       position: relative;
@@ -569,7 +591,6 @@
       margin-top: 2rem;
     }
 
-    /* Connecting Progress Track Line Behind Nodes */
     .process-pipeline::before {
       content: '';
       position: absolute;
@@ -577,7 +598,8 @@
       left: 8%;
       right: 8%;
       height: 3px;
-      background: linear-gradient(90deg, rgba(199, 138, 88, 0.2), var(--coffee-accent), rgba(199, 138, 88, 0.2));
+      background: linear-gradient(90deg, #1E40AF, #38BDF8, #2DD4BF);
+      box-shadow: 0 0 12px var(--navy-glow);
       z-index: 1;
     }
 
@@ -598,55 +620,54 @@
       transform: translateY(0);
     }
 
-    /* Glowing Number Indicator Circle */
     .node-circle {
       width: 58px;
       height: 58px;
       border-radius: 50%;
-      background: var(--card-bg);
-      border: 2px solid var(--coffee-accent);
-      box-shadow: 0 0 20px var(--coffee-glow);
+      background: var(--card-navy-bg);
+      border: 2px solid var(--accent-cyan);
+      box-shadow: 0 0 20px var(--navy-glow);
       display: flex;
       align-items: center;
       justify-content: center;
       font-family: 'Syne', sans-serif;
       font-size: 1.35rem;
       font-weight: 800;
-      color: var(--coffee-accent);
+      color: #FFFFFF;
       margin-bottom: 1.2rem;
       transition: all 0.3s ease;
     }
 
     .pipeline-node:hover .node-circle {
-      background: var(--coffee-accent);
+      background: #2563EB;
       color: #FFF;
       transform: scale(1.15) rotate(10deg);
-      box-shadow: 0 0 28px rgba(199, 138, 88, 0.6);
+      box-shadow: 0 0 28px rgba(56, 189, 248, 0.6);
     }
 
     .node-card {
-      background: var(--card-bg);
-      border: 1px solid var(--card-border);
+      background: var(--card-navy-bg);
+      border: 1px solid var(--card-navy-border);
       border-radius: 16px;
       padding: 1.4rem 1.1rem;
       width: 100%;
-      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.05);
+      box-shadow: 0 8px 24px rgba(10, 25, 47, 0.2);
       transition: all 0.3s ease;
     }
 
     .pipeline-node:hover .node-card {
-      border-color: var(--coffee-accent);
+      border-color: var(--accent-cyan);
       transform: translateY(-5px);
     }
 
     .node-title {
       font-size: 1.1rem;
       margin-bottom: 0.4rem;
-      color: var(--text-card-head);
+      color: #FFFFFF;
     }
 
     .node-desc {
-      color: var(--text-card-body);
+      color: #CBD5E1;
       font-size: 0.84rem;
       line-height: 1.48;
     }
@@ -661,9 +682,9 @@
     }
 
     .case-card {
-      background: var(--card-bg);
-      border: 1px solid var(--card-border);
-      border-radius: 16px;
+      background: var(--card-navy-bg);
+      border: 1.5px solid var(--card-navy-border);
+      border-radius: 18px;
       padding: 1.8rem;
     }
 
@@ -683,12 +704,12 @@
       font-weight: 700;
       font-size: 0.78rem;
       text-transform: uppercase;
-      color: var(--coffee-accent);
+      color: var(--accent-cyan);
       min-width: 72px;
     }
 
     .case-step-content {
-      color: var(--text-card-body);
+      color: #CBD5E1;
       font-size: 0.88rem;
     }
 
@@ -698,10 +719,11 @@
     .contact-container {
       max-width: 620px;
       margin: auto;
-      background: var(--card-bg);
-      border: 1px solid var(--card-border);
-      border-radius: 18px;
+      background: var(--card-navy-bg);
+      border: 1.5px solid var(--card-navy-border);
+      border-radius: 20px;
       padding: 2.2rem 1.8rem;
+      box-shadow: 0 16px 40px rgba(10, 25, 47, 0.3);
     }
 
     .whatsapp-banner {
@@ -710,8 +732,8 @@
       align-items: center;
       text-align: center;
       gap: 12px;
-      background: var(--badge-bg);
-      border: 1px dashed var(--coffee-accent);
+      background: #0F274A;
+      border: 1px dashed var(--accent-cyan);
       border-radius: 14px;
       padding: 1.25rem;
       margin-bottom: 1.8rem;
@@ -726,24 +748,25 @@
       font-size: 0.84rem;
       font-weight: 600;
       margin-bottom: 0.4rem;
-      color: var(--text-card-head);
+      color: #FFFFFF;
     }
 
     .form-input, .form-textarea, .form-select {
       width: 100%;
-      background: var(--input-bg);
-      border: 1px solid var(--input-border);
+      background: #071322;
+      border: 1px solid var(--card-navy-border);
       border-radius: 10px;
-      padding: 0.7rem 0.95rem;
-      color: var(--text-main);
+      padding: 0.75rem 1rem;
+      color: #FFFFFF;
       font-family: inherit;
-      font-size: 0.9rem;
+      font-size: 0.92rem;
       outline: none;
-      transition: border-color 0.2s;
+      transition: border-color 0.2s, box-shadow 0.2s;
     }
 
     .form-input:focus, .form-textarea:focus, .form-select:focus {
-      border-color: var(--coffee-accent);
+      border-color: var(--accent-cyan);
+      box-shadow: 0 0 12px var(--navy-glow);
     }
 
     /* =========================================
@@ -756,9 +779,9 @@
     }
 
     .founder-card {
-      background: var(--card-bg);
-      border: 1px solid var(--card-border);
-      border-radius: 16px;
+      background: var(--card-navy-bg);
+      border: 1.5px solid var(--card-navy-border);
+      border-radius: 18px;
       padding: 1.8rem;
       display: flex;
       flex-direction: column;
@@ -770,12 +793,12 @@
       font-weight: 700;
       text-transform: uppercase;
       letter-spacing: 0.06em;
-      color: var(--coffee-accent);
+      color: var(--accent-cyan);
       margin-bottom: 0.8rem;
     }
 
     .founder-contacts {
-      border-top: 1px solid var(--card-border);
+      border-top: 1px solid rgba(255, 255, 255, 0.1);
       padding-top: 0.9rem;
       display: flex;
       flex-direction: column;
@@ -786,14 +809,14 @@
       display: flex;
       align-items: center;
       gap: 8px;
-      color: var(--text-card-body);
+      color: #CBD5E1;
       font-size: 0.84rem;
       text-decoration: none;
       transition: color 0.2s;
     }
 
     .contact-row:hover {
-      color: var(--coffee-accent);
+      color: var(--accent-cyan);
     }
 
     /* =========================================
@@ -801,9 +824,9 @@
     ========================================= */
     footer {
       background: var(--footer-bg);
-      color: #9C948B;
+      color: #94A3B8;
       padding: 3rem 0 1.8rem;
-      border-top: 1px solid rgba(255,255,255,0.08);
+      border-top: 1px solid var(--card-navy-border);
     }
 
     .footer-wrapper {
@@ -822,7 +845,7 @@
     }
 
     .footer-social-btn {
-      color: #E2D9D0;
+      color: #E2E8F0;
       text-decoration: none;
       display: flex;
       align-items: center;
@@ -833,17 +856,19 @@
     }
 
     .footer-social-btn:hover {
-      color: var(--coffee-accent);
+      color: var(--accent-cyan);
     }
 
-    /* Responsive */
+    /* =========================================
+       CRITICAL MOBILE RESPONSIVE FIXES
+    ========================================= */
     @media (max-width: 992px) {
       .process-pipeline { 
         grid-template-columns: 1fr; 
         gap: 2rem;
       }
       .process-pipeline::before {
-        display: none; /* hidden on mobile vertical list */
+        display: none;
       }
       .founders-grid { grid-template-columns: 1fr; }
       .case-studies-grid { grid-template-columns: 1fr; }
@@ -853,6 +878,39 @@
 
       .hero h1 { font-size: 2.15rem; }
       .hero { padding: 2.4rem 0 1.8rem; }
+    }
+
+    /* Mobile-Specific Slide Padding & Snapping (No Sticking to Screen) */
+    @media (max-width: 768px) {
+      .carousel-header-controls {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+      
+      .carousel-btn-group {
+        display: flex;
+        width: 100%;
+        justify-content: flex-end;
+        margin-top: 0.4rem;
+      }
+
+      .slides-viewport {
+        padding: 10px 1.25rem 24px 1.25rem;
+        margin: 0 -1.25rem;
+        scroll-padding-left: 1.25rem;
+      }
+
+      .slides-track {
+        gap: 1rem;
+        padding-right: 1.5rem;
+      }
+
+      /* Dynamic fluid width with preview of next card */
+      .slide-card {
+        width: calc(85vw - 1.5rem);
+        max-width: 320px;
+        padding: 1.8rem 1.4rem;
+      }
     }
   </style>
 </head>
@@ -917,12 +975,12 @@
       </div>
     </section>
 
-    <!-- ================= CAPABILITIES (SLIDESHOW / CAROUSEL) ================= -->
+    <!-- ================= CAPABILITIES: MOBILE-FRIENDLY NAVY BLUE SLIDES ================= -->
     <section id="services" class="section container">
       <div class="carousel-header-controls">
         <div>
           <h2 class="section-title" style="text-align: left; margin-bottom: 0.2rem;">End-to-End Capabilities</h2>
-          <p style="color: var(--text-muted); font-size: 0.95rem;">Swipe or use controls to browse our full-stack engineering specializations.</p>
+          <p style="color: var(--text-muted); font-size: 0.95rem;">Swipe or navigate across our engineering specializations.</p>
         </div>
         <div class="carousel-btn-group">
           <button class="slide-arrow-btn" id="prevSlide" aria-label="Previous Slide">
@@ -934,7 +992,7 @@
         </div>
       </div>
 
-      <!-- Horizontal Scroll Slides Viewport -->
+      <!-- Horizontal Scroll Track with Snapping & Breathing Padding -->
       <div class="slides-viewport" id="slidesViewport">
         <div class="slides-track">
           <!-- Slide 1 -->
@@ -1023,10 +1081,10 @@
           <div>
             <div class="card-top">
               <span class="project-tag">● Live Client Platform</span>
-              <i data-lucide="gem" style="color: var(--coffee-accent); width:20px;"></i>
+              <i data-lucide="gem" style="color: var(--accent-cyan); width:20px;"></i>
             </div>
-            <h3 style="font-size: 1.4rem; margin-bottom: 0.5rem; color: var(--text-card-head);">Ram Brahmmam Jewelleries</h3>
-            <p style="color: var(--text-card-body); font-size: 0.92rem;">A bespoke luxury digital showroom crafted for premium traditional and modern jewelry collections. Features rapid filtering, high-resolution visual storytelling, and instant client inquiries.</p>
+            <h3 style="font-size: 1.4rem; margin-bottom: 0.5rem; color: #FFFFFF;">Ram Brahmmam Jewelleries</h3>
+            <p style="color: #CBD5E1; font-size: 0.92rem;">A bespoke luxury digital showroom crafted for premium traditional and modern jewelry collections. Features rapid filtering, high-resolution visual storytelling, and instant client inquiries.</p>
             <div class="project-tech">
               <span class="tech-pill">Luxury Catalog</span>
               <span class="tech-pill">Vercel Edge</span>
@@ -1043,10 +1101,10 @@
           <div>
             <div class="card-top">
               <span class="project-tag">● Live Client Platform</span>
-              <i data-lucide="graduation-cap" style="color: var(--coffee-accent); width:20px;"></i>
+              <i data-lucide="graduation-cap" style="color: var(--accent-cyan); width:20px;"></i>
             </div>
-            <h3 style="font-size: 1.4rem; margin-bottom: 0.5rem; color: var(--text-card-head);">Wonder Kids School</h3>
-            <p style="color: var(--text-card-body); font-size: 0.92rem;">An engaging, interactive preschool web portal showcasing educational curriculums, event galleries, and structured admissions touchpoints for prospective parents.</p>
+            <h3 style="font-size: 1.4rem; margin-bottom: 0.5rem; color: #FFFFFF;">Wonder Kids School</h3>
+            <p style="color: #CBD5E1; font-size: 0.92rem;">An engaging, interactive preschool web portal showcasing educational curriculums, event galleries, and structured admissions touchpoints for prospective parents.</p>
             <div class="project-tech">
               <span class="tech-pill">Education Portal</span>
               <span class="tech-pill">Admissions Funnel</span>
@@ -1060,7 +1118,7 @@
       </div>
     </section>
 
-    <!-- ================= 5-STEP PROCESS: ANIMATED PIPELINE ================= -->
+    <!-- ================= 5-STEP PROCESS ================= -->
     <section id="process" class="section container">
       <h2 class="section-title">Our 5-Step Process</h2>
       <p class="section-sub">A structured, high-precision roadmap from blueprint to production deployment.</p>
@@ -1071,7 +1129,7 @@
           <div class="node-circle">01</div>
           <div class="node-card">
             <h4 class="node-title">Discover</h4>
-            <p class="node-desc">Deep-dive discovery session to align on target audience, branding, and technical KPIs.</p>
+            <p class="node-desc">Discovery session to align on target audience, branding, and technical KPIs.</p>
           </div>
         </div>
 
@@ -1120,7 +1178,7 @@
 
       <div class="case-studies-grid">
         <div class="case-card">
-          <h3 style="font-size: 1.25rem; color: var(--text-card-head);">Ram Brahmmam Jewelleries</h3>
+          <h3 style="font-size: 1.25rem; color: #FFFFFF;">Ram Brahmmam Jewelleries</h3>
           <div class="case-flow">
             <div class="case-step">
               <span class="case-step-label">Problem</span>
@@ -1142,7 +1200,7 @@
         </div>
 
         <div class="case-card">
-          <h3 style="font-size: 1.25rem; color: var(--text-card-head);">Wonder Kids School</h3>
+          <h3 style="font-size: 1.25rem; color: #FFFFFF;">Wonder Kids School</h3>
           <div class="case-flow">
             <div class="case-step">
               <span class="case-step-label">Problem</span>
@@ -1165,7 +1223,7 @@
       </div>
     </section>
 
-    <!-- ================= START A PROJECT + SINGLE-LINE WHATSAPP ================= -->
+    <!-- ================= START A PROJECT + DIRECT WHATSAPP ================= -->
     <section id="contact" class="section container">
       <h2 class="section-title">Start a Project</h2>
       <p class="section-sub">Ready to build or modernize your platform? Connect with us directly or drop a note.</p>
@@ -1173,7 +1231,7 @@
       <div class="contact-container">
         <!-- Single-Line WhatsApp CTA -->
         <div class="whatsapp-banner">
-          <p style="font-weight: 600; color: var(--text-card-head); font-size: 0.95rem;">Prefer instant messaging? Chat with the founders directly:</p>
+          <p style="font-weight: 600; color: #FFFFFF; font-size: 0.95rem;">Prefer instant messaging? Chat with the founders directly:</p>
           <a href="https://wa.me/918897798251?text=Hello%20snatak.dev%20team,%20I%20would%20like%20to%20discuss%20a%20project." target="_blank" rel="noopener noreferrer" class="btn-whatsapp">
             <i data-lucide="message-circle" style="width: 17px;"></i> Chat on WhatsApp (+91 88977 98251)
           </a>
@@ -1221,9 +1279,9 @@
         <!-- Dinesh -->
         <div class="founder-card">
           <div>
-            <h3 style="font-size: 1.3rem; color: var(--text-card-head);">Budidha Dinesh Goud</h3>
+            <h3 style="font-size: 1.3rem; color: #FFFFFF;">Budidha Dinesh Goud</h3>
             <div class="founder-role">Lead Tech Architect & Growth</div>
-            <p style="color: var(--text-card-body); font-size: 0.88rem; margin-bottom: 1.2rem;">Full-stack engineering, web performance optimization, and client solution strategy.</p>
+            <p style="color: #CBD5E1; font-size: 0.88rem; margin-bottom: 1.2rem;">Full-stack engineering, web performance optimization, and client solution strategy.</p>
           </div>
           <div class="founder-contacts">
             <a href="mailto:dineshgoudb@gmail.com" class="contact-row">
@@ -1238,9 +1296,9 @@
         <!-- Sai Pranith -->
         <div class="founder-card">
           <div>
-            <h3 style="font-size: 1.3rem; color: var(--text-card-head);">M. Sai Pranith</h3>
+            <h3 style="font-size: 1.3rem; color: #FFFFFF;">M. Sai Pranith</h3>
             <div class="founder-role">UI/UX & Product Lead</div>
-            <p style="color: var(--text-card-body); font-size: 0.88rem; margin-bottom: 1.2rem;">Product design systems, digital catalog aesthetics, and responsive layout design.</p>
+            <p style="color: #CBD5E1; font-size: 0.88rem; margin-bottom: 1.2rem;">Product design systems, digital catalog aesthetics, and responsive layout design.</p>
           </div>
           <div class="founder-contacts">
             <a href="mailto:saipranith876@gmail.com" class="contact-row">
@@ -1255,9 +1313,9 @@
         <!-- Chandra Shekar -->
         <div class="founder-card">
           <div>
-            <h3 style="font-size: 1.3rem; color: var(--text-card-head);">Chelluri Chandra Shekar</h3>
+            <h3 style="font-size: 1.3rem; color: #FFFFFF;">Chelluri Chandra Shekar</h3>
             <div class="founder-role">Design & Operations Lead</div>
-            <p style="color: var(--text-card-body); font-size: 0.88rem; margin-bottom: 1.2rem;">Interactive UI development, project delivery schedules, and client relations.</p>
+            <p style="color: #CBD5E1; font-size: 0.88rem; margin-bottom: 1.2rem;">Interactive UI development, project delivery schedules, and client relations.</p>
           </div>
           <div class="founder-contacts">
             <a href="mailto:chellurichandu13@gmail.com" class="contact-row">
@@ -1295,13 +1353,13 @@
           </a>
         </div>
       </div>
-      <p style="text-align: center; font-size: 0.84rem; border-top: 1px solid rgba(255,255,255,0.06); padding-top: 1.3rem;">
+      <p style="text-align: center; font-size: 0.84rem; border-top: 1px solid var(--card-navy-border); padding-top: 1.3rem;">
         © 2026 <strong>snātak.dev</strong>. High-Performance Software Architecture & Modern Digital Craft.
       </p>
     </div>
   </footer>
 
-  <!-- Scripts: Icons, Carousel Slider, Staggered Roadmap -->
+  <!-- Scripts -->
   <script>
     lucide.createIcons();
 
@@ -1353,17 +1411,19 @@
       });
     });
 
-    // 3. Capabilities Slides Carousel Controls
+    // 3. Capabilities Slides Carousel Controls (Dynamic Width Responsive Scroll)
     const slidesViewport = document.getElementById('slidesViewport');
     const prevSlide = document.getElementById('prevSlide');
     const nextSlide = document.getElementById('nextSlide');
 
     if (prevSlide && nextSlide && slidesViewport) {
       prevSlide.addEventListener('click', () => {
-        slidesViewport.scrollBy({ left: -310, behavior: 'smooth' });
+        const cardWidth = slidesViewport.querySelector('.slide-card')?.offsetWidth || 300;
+        slidesViewport.scrollBy({ left: -(cardWidth + 16), behavior: 'smooth' });
       });
       nextSlide.addEventListener('click', () => {
-        slidesViewport.scrollBy({ left: 310, behavior: 'smooth' });
+        const cardWidth = slidesViewport.querySelector('.slide-card')?.offsetWidth || 300;
+        slidesViewport.scrollBy({ left: cardWidth + 16, behavior: 'smooth' });
       });
     }
 
@@ -1375,7 +1435,7 @@
           pipelineNodes.forEach((node, index) => {
             setTimeout(() => {
               node.classList.add('node-revealed');
-            }, index * 160); // 160ms cinematic reveal stagger
+            }, index * 160);
           });
           pipelineObserver.disconnect();
         }
