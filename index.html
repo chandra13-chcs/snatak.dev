@@ -15,7 +15,7 @@
 
   <style>
     /* =========================================
-       THEME VARIABLES: SOLID NAVY BLUE CARDS & TABS
+       THEME PALETTE (Solid Navy Blue Surfaces)
     ========================================= */
     :root[data-theme="dark"] {
       --bg-page: #080A0E;              
@@ -25,6 +25,7 @@
       --header-border: rgba(56, 189, 248, 0.25);
       --header-shadow: 0 4px 25px rgba(0, 0, 0, 0.8);
       
+      /* Solid Deep Navy Blue for Cards */
       --card-navy-bg: #0A192F;
       --card-navy-border: #1E3A8A;
       --card-hover-border: #38BDF8;
@@ -56,6 +57,7 @@
       --header-border: #1E3A8A;
       --header-shadow: 0 6px 25px rgba(10, 25, 47, 0.18);
       
+      /* Solid Deep Navy Cards for High Contrast */
       --card-navy-bg: #0B1E38;
       --card-navy-border: #1E40AF;
       --card-hover-border: #38BDF8;
@@ -107,13 +109,14 @@
     }
 
     .section {
-      padding: 4rem 0;
+      padding: 4.5rem 0;
     }
 
     .section-title {
       text-align: center;
       font-size: 2.35rem;
       margin-bottom: 0.4rem;
+      color: var(--text-main);
     }
 
     .section-sub {
@@ -125,7 +128,7 @@
     }
 
     /* =========================================
-       1. HEADER (SOLID NAVY BAR)
+       1. HEADER
     ========================================= */
     header {
       position: sticky;
@@ -380,7 +383,7 @@
     }
 
     /* =========================================
-       3. SLIDES & TABS: RESPONSIVE CAROUSEL
+       3. END-TO-END CAPABILITIES (FIXED TEXT VISIBILITY)
     ========================================= */
     .carousel-header-controls {
       display: flex;
@@ -419,7 +422,6 @@
       box-shadow: 0 6px 20px rgba(56, 189, 248, 0.5);
     }
 
-    /* Viewport with comfortable margins */
     .slides-viewport {
       overflow-x: auto;
       scroll-behavior: smooth;
@@ -442,19 +444,20 @@
       padding-right: 1.5rem;
     }
 
-    /* Slide Card */
+    /* Fixed Slide Card Styling to Prevent Blank/Cutoff content */
     .slide-card {
       width: 300px;
+      min-height: 250px;
       flex-shrink: 0;
       background-color: var(--card-navy-bg) !important;
       border: 1.5px solid var(--card-navy-border);
       border-radius: 20px;
-      padding: 2.2rem 1.8rem;
+      padding: 1.8rem 1.6rem;
       box-shadow: 0 12px 30px rgba(10, 25, 47, 0.4);
       transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
       display: flex;
       flex-direction: column;
-      justify-content: space-between;
+      justify-content: flex-start;
       scroll-snap-align: start;
     }
 
@@ -467,6 +470,7 @@
     .service-icon {
       width: 48px;
       height: 48px;
+      min-height: 48px;
       border-radius: 14px;
       background: #0F274A;
       border: 1.5px solid var(--accent-cyan);
@@ -474,7 +478,7 @@
       display: flex;
       align-items: center;
       justify-content: center;
-      margin-bottom: 1.3rem;
+      margin-bottom: 1.1rem;
       transition: transform 0.3s ease;
       box-shadow: 0 0 15px var(--navy-glow);
     }
@@ -486,17 +490,26 @@
       border-color: #FFFFFF;
     }
 
+    .service-content {
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+      width: 100%;
+    }
+
     .service-title {
       font-size: 1.25rem;
-      margin-bottom: 0.6rem;
-      color: var(--card-text-title) !important;
+      color: #FFFFFF !important;
       font-weight: 700;
+      line-height: 1.35;
+      margin: 0;
     }
 
     .service-desc {
-      color: var(--card-text-body) !important;
+      color: #CBD5E1 !important;
       font-size: 0.92rem;
-      line-height: 1.6;
+      line-height: 1.55;
+      margin: 0;
     }
 
     /* =========================================
@@ -581,20 +594,20 @@
     }
 
     /* =========================================
-       5. 5-STEP PROCESS: NAVY PIPELINE
+       5. 5-STEP PROCESS (FIXED SECTION HEADINGS)
     ========================================= */
     .process-pipeline {
       position: relative;
       display: grid;
       grid-template-columns: repeat(5, 1fr);
       gap: 1.2rem;
-      margin-top: 2rem;
+      margin-top: 2.2rem;
     }
 
     .process-pipeline::before {
       content: '';
       position: absolute;
-      top: 36px;
+      top: 29px;
       left: 8%;
       right: 8%;
       height: 3px;
@@ -860,7 +873,7 @@
     }
 
     /* =========================================
-       CRITICAL MOBILE RESPONSIVE FIXES
+       CRITICAL RESPONSIVE RULES
     ========================================= */
     @media (max-width: 992px) {
       .process-pipeline { 
@@ -880,7 +893,7 @@
       .hero { padding: 2.4rem 0 1.8rem; }
     }
 
-    /* Mobile-Specific Slide Padding & Snapping (No Sticking to Screen) */
+    /* Mobile-Specific Card Size & Padding */
     @media (max-width: 768px) {
       .carousel-header-controls {
         flex-direction: column;
@@ -905,11 +918,19 @@
         padding-right: 1.5rem;
       }
 
-      /* Dynamic fluid width with preview of next card */
       .slide-card {
         width: calc(85vw - 1.5rem);
         max-width: 320px;
-        padding: 1.8rem 1.4rem;
+        min-height: 220px;
+        padding: 1.6rem 1.4rem;
+      }
+
+      .service-title {
+        font-size: 1.15rem;
+      }
+
+      .service-desc {
+        font-size: 0.88rem;
       }
     }
   </style>
@@ -975,7 +996,7 @@
       </div>
     </section>
 
-    <!-- ================= CAPABILITIES: MOBILE-FRIENDLY NAVY BLUE SLIDES ================= -->
+    <!-- ================= CAPABILITIES: FULLY VISIBLE SLIDES ================= -->
     <section id="services" class="section container">
       <div class="carousel-header-controls">
         <div>
@@ -992,13 +1013,13 @@
         </div>
       </div>
 
-      <!-- Horizontal Scroll Track with Snapping & Breathing Padding -->
+      <!-- Horizontal Scroll Track with Structured Content Container -->
       <div class="slides-viewport" id="slidesViewport">
         <div class="slides-track">
           <!-- Slide 1 -->
           <div class="slide-card">
             <div class="service-icon"><i data-lucide="globe"></i></div>
-            <div>
+            <div class="service-content">
               <h3 class="service-title">Full-Stack Web Apps</h3>
               <p class="service-desc">Scalable, responsive web applications engineered using modern frontend frameworks and robust backend architectures.</p>
             </div>
@@ -1007,7 +1028,7 @@
           <!-- Slide 2 -->
           <div class="slide-card">
             <div class="service-icon"><i data-lucide="shopping-bag"></i></div>
-            <div>
+            <div class="service-content">
               <h3 class="service-title">Luxury Catalogs & Storefronts</h3>
               <p class="service-desc">High-conversion digital catalogs and interactive product showcases tailored for gold, diamond, and luxury goods.</p>
             </div>
@@ -1016,7 +1037,7 @@
           <!-- Slide 3 -->
           <div class="slide-card">
             <div class="service-icon"><i data-lucide="palette"></i></div>
-            <div>
+            <div class="service-content">
               <h3 class="service-title">UI/UX & Design Systems</h3>
               <p class="service-desc">Bespoke typography, smooth micro-interactions, responsive mobile design, and reusable UI tokens.</p>
             </div>
@@ -1025,7 +1046,7 @@
           <!-- Slide 4 -->
           <div class="slide-card">
             <div class="service-icon"><i data-lucide="database"></i></div>
-            <div>
+            <div class="service-content">
               <h3 class="service-title">Enterprise Software & ERP</h3>
               <p class="service-desc">Institutional dashboards, student management, and internal business logistics automation.</p>
             </div>
@@ -1034,7 +1055,7 @@
           <!-- Slide 5 -->
           <div class="slide-card">
             <div class="service-icon"><i data-lucide="zap"></i></div>
-            <div>
+            <div class="service-content">
               <h3 class="service-title">Speed & Performance</h3>
               <p class="service-desc">Sub-second page load times, image compression pipelines, and database query optimizations.</p>
             </div>
@@ -1043,7 +1064,7 @@
           <!-- Slide 6 -->
           <div class="slide-card">
             <div class="service-icon"><i data-lucide="cloud"></i></div>
-            <div>
+            <div class="service-content">
               <h3 class="service-title">Cloud Deployment & CI/CD</h3>
               <p class="service-desc">Zero-downtime automated workflows deployed directly across edge global networks.</p>
             </div>
@@ -1052,7 +1073,7 @@
           <!-- Slide 7 -->
           <div class="slide-card">
             <div class="service-icon"><i data-lucide="smartphone"></i></div>
-            <div>
+            <div class="service-content">
               <h3 class="service-title">Mobile PWA Development</h3>
               <p class="service-desc">Progressive web apps delivering native app-like fluidity directly on mobile browsers.</p>
             </div>
@@ -1061,7 +1082,7 @@
           <!-- Slide 8 -->
           <div class="slide-card">
             <div class="service-icon"><i data-lucide="headphones"></i></div>
-            <div>
+            <div class="service-content">
               <h3 class="service-title">Architectural Support</h3>
               <p class="service-desc">Continuous monitoring, security maintenance, and iterative development alongside growth.</p>
             </div>
@@ -1118,7 +1139,7 @@
       </div>
     </section>
 
-    <!-- ================= 5-STEP PROCESS ================= -->
+    <!-- ================= 5-STEP PROCESS (FIXED HEADINGS) ================= -->
     <section id="process" class="section container">
       <h2 class="section-title">Our 5-Step Process</h2>
       <p class="section-sub">A structured, high-precision roadmap from blueprint to production deployment.</p>
@@ -1229,7 +1250,6 @@
       <p class="section-sub">Ready to build or modernize your platform? Connect with us directly or drop a note.</p>
 
       <div class="contact-container">
-        <!-- Single-Line WhatsApp CTA -->
         <div class="whatsapp-banner">
           <p style="font-weight: 600; color: #FFFFFF; font-size: 0.95rem;">Prefer instant messaging? Chat with the founders directly:</p>
           <a href="https://wa.me/918897798251?text=Hello%20snatak.dev%20team,%20I%20would%20like%20to%20discuss%20a%20project." target="_blank" rel="noopener noreferrer" class="btn-whatsapp">
@@ -1411,7 +1431,7 @@
       });
     });
 
-    // 3. Capabilities Slides Carousel Controls (Dynamic Width Responsive Scroll)
+    // 3. Capabilities Slides Carousel Controls (Dynamic Responsive Width)
     const slidesViewport = document.getElementById('slidesViewport');
     const prevSlide = document.getElementById('prevSlide');
     const nextSlide = document.getElementById('nextSlide');
@@ -1440,7 +1460,7 @@
           pipelineObserver.disconnect();
         }
       });
-    }, { threshold: 0.2 });
+    }, { threshold: 0.15 });
 
     const pipelineTrack = document.getElementById('pipelineTrack');
     if (pipelineTrack) {
