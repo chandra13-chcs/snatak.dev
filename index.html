@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>snātak.dev | Modern Software Architecture & Digital Craft</title>
   
-  <!-- Premium Fonts: Syne & Plus Jakarta Sans -->
+  <!-- Premium Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700&family=Syne:wght@700;800&display=swap" rel="stylesheet">
@@ -15,13 +15,16 @@
 
   <style>
     /* =========================================
-       THEME VARIABLES (Dark & Light Mode)
+       THEME VARIABLES
     ========================================= */
     :root[data-theme="dark"] {
       --bg-page: #0B0B0E;
-      --bg-page-subtle: #121115;
-      --bg-header: rgba(11, 11, 14, 0.9);
-      --header-border: rgba(255, 255, 255, 0.08);
+      --bg-page-subtle: #141318;
+      
+      /* Distinct Solid Dark Header */
+      --bg-header: #08080A;
+      --header-border: rgba(199, 138, 88, 0.25);
+      --header-shadow: 0 4px 20px rgba(0, 0, 0, 0.6);
       
       --card-bg: linear-gradient(165deg, #221610 0%, #150E0A 100%);
       --card-border: rgba(199, 138, 88, 0.28);
@@ -40,13 +43,17 @@
       --input-bg: rgba(255, 255, 255, 0.04);
       --input-border: rgba(255, 255, 255, 0.12);
       --footer-bg: #070709;
+      --logo-filter: invert(1);
     }
 
     :root[data-theme="light"] {
       --bg-page: #FAF5EE;
       --bg-page-subtle: #F2EAE0;
-      --bg-header: rgba(250, 245, 238, 0.92);
-      --header-border: #E5DACB;
+      
+      /* Light Mode లో కూడా హెడర్ కలిసిపోకుండా Solid Charcoal Black Bar */
+      --bg-header: #121215;
+      --header-border: #2E2620;
+      --header-shadow: 0 6px 25px rgba(26, 16, 11, 0.12);
       
       --card-bg: #FFFFFF;
       --card-border: #E5DACB;
@@ -65,6 +72,7 @@
       --input-bg: #FFFFFF;
       --input-border: #DBC8B5;
       --footer-bg: #141210;
+      --logo-filter: invert(1);
     }
 
     * {
@@ -78,7 +86,7 @@
       background-color: var(--bg-page);
       color: var(--text-main);
       font-family: 'Plus Jakarta Sans', sans-serif;
-      line-height: 1.65;
+      line-height: 1.6;
       transition: background-color 0.3s ease, color 0.3s ease;
       overflow-x: hidden;
     }
@@ -88,42 +96,40 @@
       letter-spacing: -0.025em;
     }
 
-    /* Container Utility */
     .container {
-      max-width: 1200px;
+      max-width: 1140px;
       margin: 0 auto;
-      padding: 0 2rem;
+      padding: 0 1.5rem;
     }
 
     .section {
-      padding: 6rem 0;
+      padding: 4.5rem 0;
     }
 
     .section-title {
       text-align: center;
-      font-size: 2.85rem;
-      margin-bottom: 0.6rem;
+      font-size: 2.5rem;
+      margin-bottom: 0.5rem;
     }
 
     .section-sub {
       text-align: center;
       color: var(--text-muted);
-      max-width: 640px;
-      margin: 0 auto 3.8rem auto;
-      font-size: 1.05rem;
+      max-width: 600px;
+      margin: 0 auto 3rem auto;
+      font-size: 1rem;
     }
 
     /* =========================================
-       1. NAVBAR
+       1. DISTINCT SOLID HEADER (కింద పేజీతో కలవదు)
     ========================================= */
     header {
       position: sticky;
       top: 0;
       z-index: 100;
-      background: var(--bg-header);
-      backdrop-filter: blur(18px);
-      border-bottom: 1px solid var(--header-border);
-      transition: background 0.3s ease, border-color 0.3s ease;
+      background: var(--bg-header) !important;
+      border-bottom: 1.5px solid var(--header-border);
+      box-shadow: var(--header-shadow);
     }
 
     .nav-wrapper {
@@ -136,20 +142,19 @@
     .brand-logo-container {
       display: flex;
       align-items: center;
-      gap: 12px;
+      gap: 10px;
       text-decoration: none;
     }
 
     .brand-emblem-wrap {
-      width: 40px;
-      height: 40px;
+      width: 38px;
+      height: 38px;
       display: flex;
       align-items: center;
       justify-content: center;
-      border-radius: 10px;
-      overflow: hidden;
       background: #000;
-      border: 1px solid var(--badge-border);
+      border-radius: 8px;
+      border: 1px solid rgba(199, 138, 88, 0.4);
     }
 
     .brand-emblem-img {
@@ -157,13 +162,14 @@
       height: 100%;
       object-fit: contain;
       mix-blend-mode: screen;
+      filter: var(--logo-filter);
     }
 
     .brand-title-exact {
       font-family: 'Syne', sans-serif;
       font-size: 1.45rem;
       font-weight: 800;
-      color: var(--text-main);
+      color: #FFFFFF !important; /* ఎల్లప్పుడూ డార్క్ హెడర్‌లో తెల్లగా క్లియర్‌గా ఉంటుంది */
       letter-spacing: -0.02em;
     }
 
@@ -171,14 +177,15 @@
       color: var(--coffee-accent);
     }
 
+    /* Header Navigation Links (Always Bright against Header) */
     .nav-links {
       display: flex;
-      gap: 2rem;
+      gap: 1.8rem;
       align-items: center;
     }
 
     .nav-links a {
-      color: var(--text-muted);
+      color: #D1C7BD;
       text-decoration: none;
       font-weight: 600;
       font-size: 0.92rem;
@@ -189,12 +196,17 @@
       color: var(--coffee-accent);
     }
 
-    /* Theme Toggle Button */
-    .theme-toggle {
-      background: none;
-      border: 1px solid var(--header-border);
-      color: var(--text-main);
-      padding: 8px;
+    .nav-actions {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .icon-btn {
+      background: rgba(255, 255, 255, 0.08);
+      border: 1px solid rgba(255, 255, 255, 0.15);
+      color: #FFFFFF;
+      padding: 7px;
       border-radius: 50%;
       cursor: pointer;
       display: flex;
@@ -203,22 +215,63 @@
       transition: transform 0.2s, border-color 0.2s;
     }
 
-    .theme-toggle:hover {
+    .icon-btn:hover {
       transform: scale(1.08);
       border-color: var(--coffee-accent);
     }
 
-    /* Buttons */
+    .mobile-menu-btn {
+      display: none;
+    }
+
+    /* Mobile Dropdown Drawer */
+    .mobile-nav-drawer {
+      display: none;
+      position: absolute;
+      top: 100%;
+      left: 0;
+      width: 100%;
+      background: var(--bg-header);
+      border-bottom: 2px solid var(--coffee-accent);
+      padding: 1.2rem 1.5rem;
+      flex-direction: column;
+      gap: 1rem;
+      box-shadow: 0 12px 30px rgba(0,0,0,0.5);
+      z-index: 99;
+    }
+
+    .mobile-nav-drawer.open {
+      display: flex;
+    }
+
+    .mobile-nav-drawer a {
+      color: #FFFFFF;
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 1.05rem;
+      padding: 0.5rem 0;
+      border-bottom: 1px solid rgba(255,255,255,0.08);
+    }
+
+    .mobile-nav-drawer a:last-child {
+      border-bottom: none;
+    }
+
+    .mobile-nav-drawer a:hover {
+      color: var(--coffee-accent);
+    }
+
+    /* Common Buttons */
     .btn-primary {
       background: linear-gradient(135deg, #2E1D14 0%, #150E0A 100%);
       color: #FAF5EE !important;
-      padding: 0.68rem 1.5rem;
+      padding: 0.65rem 1.4rem;
       border-radius: 999px;
       font-weight: 600;
       font-size: 0.9rem;
       text-decoration: none;
       border: 1px solid var(--coffee-accent);
-      box-shadow: 0 4px 16px var(--coffee-glow);
+      box-shadow: 0 4px 14px var(--coffee-glow);
       transition: all 0.25s ease;
       display: inline-flex;
       align-items: center;
@@ -233,11 +286,11 @@
 
     .btn-primary:hover {
       transform: translateY(-2px);
-      box-shadow: 0 6px 20px var(--coffee-glow);
+      box-shadow: 0 6px 18px var(--coffee-glow);
     }
 
     .btn-secondary {
-      padding: 0.68rem 1.5rem;
+      padding: 0.65rem 1.4rem;
       border-radius: 999px;
       border: 1px solid var(--card-border);
       background: var(--input-bg);
@@ -255,32 +308,54 @@
       border-color: var(--coffee-accent);
     }
 
+    .btn-whatsapp {
+      background: #128C7E;
+      color: #FFF !important;
+      padding: 0.75rem 1.4rem;
+      border-radius: 999px;
+      font-weight: 600;
+      font-size: 0.92rem;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      border: none;
+      transition: all 0.25s ease;
+    }
+
+    .btn-whatsapp:hover {
+      background: #075E54;
+      transform: translateY(-2px);
+      box-shadow: 0 4px 15px rgba(18, 140, 126, 0.35);
+    }
+
     /* =========================================
        2. HERO SECTION
     ========================================= */
     .hero {
       text-align: center;
-      padding: 6.5rem 0 4.5rem;
+      padding: 4.5rem 0 3.5rem;
     }
 
     .hero-badge {
       display: inline-flex;
       align-items: center;
-      gap: 8px;
-      padding: 7px 18px;
+      gap: 6px;
+      padding: 6px 16px;
       background: var(--badge-bg);
       border: 1px solid var(--badge-border);
       border-radius: 999px;
       color: var(--coffee-accent);
-      font-size: 0.88rem;
+      font-size: 0.85rem;
       font-weight: 600;
-      margin-bottom: 1.8rem;
+      margin-bottom: 1.4rem;
     }
 
     .hero h1 {
-      font-size: 4rem;
+      font-size: 3.4rem;
       line-height: 1.15;
-      margin-bottom: 1.5rem;
+      margin-bottom: 1.2rem;
     }
 
     .hero h1 span {
@@ -289,117 +364,89 @@
 
     .hero p {
       color: var(--text-muted);
-      font-size: 1.25rem;
-      max-width: 740px;
-      margin: 0 auto 2.5rem;
+      font-size: 1.15rem;
+      max-width: 680px;
+      margin: 0 auto 2rem;
     }
 
     .hero-ctas {
       display: flex;
       justify-content: center;
-      gap: 1.2rem;
+      gap: 1rem;
+      flex-wrap: wrap;
     }
 
     /* =========================================
-       3. STATS & TRUST
-    ========================================= */
-    .stats-row {
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 1.5rem;
-      background: var(--bg-page-subtle);
-      border: 1px solid var(--card-border);
-      border-radius: 18px;
-      padding: 2.2rem;
-      text-align: center;
-      margin-top: 2rem;
-    }
-
-    .stat-number {
-      font-family: 'Syne', sans-serif;
-      font-size: 2.5rem;
-      font-weight: 800;
-      color: var(--coffee-accent);
-    }
-
-    .stat-label {
-      color: var(--text-muted);
-      font-size: 0.9rem;
-      margin-top: 4px;
-      font-weight: 500;
-    }
-
-    /* =========================================
-       4. SERVICES (8 Cards)
+       SERVICES (8 Cards)
     ========================================= */
     .services-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-      gap: 1.6rem;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 1.4rem;
     }
 
     .service-card {
       background: var(--card-bg);
       border: 1px solid var(--card-border);
       border-radius: 16px;
-      padding: 2rem;
+      padding: 1.8rem;
       transition: all 0.3s ease;
-      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.05);
+      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.04);
     }
 
     .service-card:hover {
-      transform: translateY(-5px);
+      transform: translateY(-4px);
       border-color: var(--card-hover-border);
     }
 
     .service-icon {
-      width: 46px;
-      height: 46px;
-      border-radius: 12px;
+      width: 42px;
+      height: 42px;
+      border-radius: 10px;
       background: var(--badge-bg);
       border: 1px solid var(--badge-border);
       color: var(--coffee-accent);
       display: flex;
       align-items: center;
       justify-content: center;
-      margin-bottom: 1.3rem;
+      margin-bottom: 1.2rem;
     }
 
     .service-title {
-      font-size: 1.25rem;
-      margin-bottom: 0.6rem;
+      font-size: 1.2rem;
+      margin-bottom: 0.5rem;
       color: var(--text-card-head);
     }
 
     .service-desc {
       color: var(--text-card-body);
-      font-size: 0.92rem;
-      line-height: 1.6;
+      font-size: 0.9rem;
+      line-height: 1.55;
     }
 
     /* =========================================
-       5. FEATURED PROJECTS (2 Live, No Pulse)
+       FEATURED PROJECTS
     ========================================= */
     .projects-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(360px, 1fr));
-      gap: 2.2rem;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 2rem;
     }
 
     .project-card {
       background: var(--card-bg);
       border: 1px solid var(--card-border);
       border-radius: 18px;
-      padding: 2.4rem;
+      padding: 2.2rem;
       transition: all 0.3s ease;
       display: flex;
       flex-direction: column;
       justify-content: space-between;
-      box-shadow: 0 12px 32px rgba(0, 0, 0, 0.08);
+      box-shadow: 0 10px 28px rgba(0, 0, 0, 0.06);
     }
 
     .project-card:hover {
-      transform: translateY(-6px);
+      transform: translateY(-5px);
       border-color: var(--card-hover-border);
     }
 
@@ -407,15 +454,15 @@
       display: flex;
       justify-content: space-between;
       align-items: center;
-      margin-bottom: 1.2rem;
+      margin-bottom: 1rem;
     }
 
     .project-tag {
-      font-size: 0.75rem;
+      font-size: 0.72rem;
       text-transform: uppercase;
       font-weight: 700;
       letter-spacing: 0.06em;
-      padding: 5px 12px;
+      padding: 4px 10px;
       border-radius: 6px;
       background: rgba(46, 196, 107, 0.15);
       color: #38bdf8;
@@ -426,7 +473,7 @@
       display: flex;
       flex-wrap: wrap;
       gap: 8px;
-      margin: 1.5rem 0;
+      margin: 1.4rem 0;
     }
 
     .tech-pill {
@@ -447,7 +494,7 @@
       font-size: 0.95rem;
       font-weight: 600;
       border-top: 1px solid var(--card-border);
-      padding-top: 1.2rem;
+      padding-top: 1.1rem;
       transition: color 0.2s;
     }
 
@@ -456,26 +503,26 @@
     }
 
     /* =========================================
-       6. CASE STUDIES (Problem → Solution → Tech → Result)
+       CASE STUDIES
     ========================================= */
     .case-studies-grid {
       display: grid;
       grid-template-columns: 1fr 1fr;
-      gap: 2rem;
+      gap: 1.8rem;
     }
 
     .case-card {
       background: var(--card-bg);
       border: 1px solid var(--card-border);
       border-radius: 18px;
-      padding: 2.2rem;
+      padding: 2rem;
     }
 
     .case-flow {
       display: flex;
       flex-direction: column;
-      gap: 1.2rem;
-      margin-top: 1.4rem;
+      gap: 1.1rem;
+      margin-top: 1.2rem;
     }
 
     .case-step {
@@ -485,151 +532,88 @@
 
     .case-step-label {
       font-weight: 700;
-      font-size: 0.8rem;
+      font-size: 0.78rem;
       text-transform: uppercase;
       color: var(--coffee-accent);
-      min-width: 80px;
+      min-width: 75px;
     }
 
     .case-step-content {
       color: var(--text-card-body);
-      font-size: 0.92rem;
+      font-size: 0.9rem;
     }
 
     /* =========================================
-       7. TECH STACK
-    ========================================= */
-    .stack-tags {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      gap: 14px;
-      max-width: 800px;
-      margin: auto;
-    }
-
-    .stack-badge {
-      background: var(--card-bg);
-      border: 1px solid var(--card-border);
-      padding: 0.7rem 1.4rem;
-      border-radius: 999px;
-      font-weight: 600;
-      font-size: 0.95rem;
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      color: var(--text-main);
-      transition: all 0.2s;
-    }
-
-    .stack-badge:hover {
-      border-color: var(--coffee-accent);
-      transform: translateY(-2px);
-    }
-
-    /* =========================================
-       8. PROCESS (5 Steps)
+       PROCESS
     ========================================= */
     .process-timeline {
       display: grid;
       grid-template-columns: repeat(5, 1fr);
-      gap: 1.2rem;
-      position: relative;
+      gap: 1rem;
     }
 
     .process-box {
       background: var(--card-bg);
       border: 1px solid var(--card-border);
-      border-radius: 16px;
-      padding: 1.6rem;
+      border-radius: 14px;
+      padding: 1.5rem;
       text-align: center;
     }
 
     .process-num {
       font-family: 'Syne', sans-serif;
-      font-size: 1.8rem;
+      font-size: 1.6rem;
       font-weight: 800;
       color: var(--coffee-accent);
-      margin-bottom: 0.4rem;
+      margin-bottom: 0.3rem;
     }
 
     .process-title {
-      font-size: 1.1rem;
-      margin-bottom: 0.5rem;
+      font-size: 1.05rem;
+      margin-bottom: 0.4rem;
       color: var(--text-card-head);
     }
 
     .process-desc {
       color: var(--text-card-body);
-      font-size: 0.84rem;
-      line-height: 1.5;
+      font-size: 0.82rem;
+      line-height: 1.45;
     }
 
     /* =========================================
-       9. WHY SNĀTAK.DEV
+       CONTACT SECTION + DIRECT WHATSAPP
     ========================================= */
-    .why-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 1.8rem;
-    }
-
-    .why-card {
-      background: var(--card-bg);
-      border: 1px solid var(--card-border);
-      border-radius: 16px;
-      padding: 2rem;
-    }
-
-    /* =========================================
-       10. TESTIMONIALS
-    ========================================= */
-    .testimonials-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 2rem;
-    }
-
-    .testimonial-card {
-      background: var(--card-bg);
-      border: 1px solid var(--card-border);
-      border-radius: 18px;
-      padding: 2.2rem;
-      font-style: italic;
-      color: var(--text-card-body);
-    }
-
-    .testimonial-author {
-      font-style: normal;
-      margin-top: 1.2rem;
-      font-weight: 700;
-      color: var(--text-card-head);
-      display: flex;
-      align-items: center;
-      gap: 10px;
-    }
-
-    /* =========================================
-       11. START A PROJECT (Form)
-    ========================================= */
-    .project-form-wrap {
-      max-width: 700px;
+    .contact-container {
+      max-width: 680px;
       margin: auto;
       background: var(--card-bg);
       border: 1px solid var(--card-border);
       border-radius: 20px;
-      padding: 2.8rem;
+      padding: 2.5rem 2rem;
+    }
+
+    .whatsapp-banner {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      gap: 10px;
+      background: var(--badge-bg);
+      border: 1px dashed var(--coffee-accent);
+      border-radius: 14px;
+      padding: 1.4rem;
+      margin-bottom: 2rem;
     }
 
     .form-group {
-      margin-bottom: 1.4rem;
+      margin-bottom: 1.2rem;
     }
 
     .form-label {
       display: block;
-      font-size: 0.88rem;
+      font-size: 0.85rem;
       font-weight: 600;
-      margin-bottom: 0.5rem;
+      margin-bottom: 0.45rem;
       color: var(--text-card-head);
     }
 
@@ -638,10 +622,10 @@
       background: var(--input-bg);
       border: 1px solid var(--input-border);
       border-radius: 10px;
-      padding: 0.8rem 1rem;
+      padding: 0.75rem 1rem;
       color: var(--text-main);
       font-family: inherit;
-      font-size: 0.95rem;
+      font-size: 0.92rem;
       outline: none;
       transition: border-color 0.2s;
     }
@@ -651,47 +635,47 @@
     }
 
     /* =========================================
-       12. FOUNDERS
+       FOUNDERS
     ========================================= */
     .founders-grid {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
-      gap: 2rem;
+      gap: 1.8rem;
     }
 
     .founder-card {
       background: var(--card-bg);
       border: 1px solid var(--card-border);
       border-radius: 18px;
-      padding: 2.2rem;
+      padding: 2rem;
       display: flex;
       flex-direction: column;
       justify-content: space-between;
     }
 
     .founder-role {
-      font-size: 0.82rem;
+      font-size: 0.8rem;
       font-weight: 700;
       text-transform: uppercase;
       letter-spacing: 0.06em;
       color: var(--coffee-accent);
-      margin-bottom: 1rem;
+      margin-bottom: 0.9rem;
     }
 
     .founder-contacts {
       border-top: 1px solid var(--card-border);
-      padding-top: 1.2rem;
+      padding-top: 1rem;
       display: flex;
       flex-direction: column;
-      gap: 0.6rem;
+      gap: 0.55rem;
     }
 
     .contact-row {
       display: flex;
       align-items: center;
-      gap: 10px;
+      gap: 8px;
       color: var(--text-card-body);
-      font-size: 0.88rem;
+      font-size: 0.85rem;
       text-decoration: none;
       transition: color 0.2s;
     }
@@ -701,12 +685,12 @@
     }
 
     /* =========================================
-       13. FOOTER
+       FOOTER
     ========================================= */
     footer {
       background: var(--footer-bg);
       color: #9C948B;
-      padding: 4rem 0 2.5rem;
+      padding: 3.5rem 0 2rem;
       border-top: 1px solid rgba(255,255,255,0.08);
     }
 
@@ -715,8 +699,8 @@
       justify-content: space-between;
       align-items: center;
       flex-wrap: wrap;
-      gap: 1.5rem;
-      margin-bottom: 2.5rem;
+      gap: 1.2rem;
+      margin-bottom: 2rem;
     }
 
     .footer-socials {
@@ -730,7 +714,7 @@
       display: flex;
       align-items: center;
       gap: 6px;
-      font-size: 0.9rem;
+      font-size: 0.88rem;
       font-weight: 500;
       transition: color 0.2s;
     }
@@ -739,19 +723,22 @@
       color: var(--coffee-accent);
     }
 
+    /* Responsive */
     @media (max-width: 992px) {
-      .stats-row { grid-template-columns: repeat(2, 1fr); }
       .process-timeline { grid-template-columns: 1fr; }
-      .founders-grid, .why-grid { grid-template-columns: 1fr; }
-      .case-studies-grid, .testimonials-grid { grid-template-columns: 1fr; }
+      .founders-grid { grid-template-columns: 1fr; }
+      .case-studies-grid { grid-template-columns: 1fr; }
+      
       .nav-links { display: none; }
-      .hero h1 { font-size: 2.8rem; }
+      .mobile-menu-btn { display: flex; }
+
+      .hero h1 { font-size: 2.6rem; }
     }
   </style>
 </head>
 <body>
 
-  <!-- ================= 1. NAVBAR ================= -->
+  <!-- ================= NAVBAR (SOLID FLOATING BAR) ================= -->
   <header>
     <div class="container nav-wrapper">
       <a href="#" class="brand-logo-container">
@@ -763,6 +750,7 @@
         </span>
       </a>
 
+      <!-- Desktop Nav -->
       <div class="nav-links">
         <a href="#home">Home</a>
         <a href="#services">Services</a>
@@ -772,51 +760,44 @@
         <a href="#contact">Contact</a>
       </div>
 
-      <div style="display:flex; align-items:center; gap:12px;">
-        <!-- Theme Toggle -->
-        <button class="theme-toggle" id="themeToggleBtn" aria-label="Toggle Theme">
-          <i data-lucide="sun" id="themeIcon" style="width: 18px; height: 18px;"></i>
+      <!-- Actions -->
+      <div class="nav-actions">
+        <button class="icon-btn" id="themeToggleBtn" aria-label="Toggle Theme">
+          <i data-lucide="sun" id="themeIcon" style="width: 17px; height: 17px;"></i>
         </button>
-        <a href="#contact" class="btn-primary">Start Project</a>
+
+        <button class="icon-btn mobile-menu-btn" id="mobileMenuBtn" aria-label="Open Navigation">
+          <i data-lucide="menu" id="menuIcon" style="width: 18px; height: 18px;"></i>
+        </button>
       </div>
+    </div>
+
+    <!-- Mobile Navigation Drawer -->
+    <div class="mobile-nav-drawer" id="mobileNavDrawer">
+      <a href="#home" class="mobile-link">Home</a>
+      <a href="#services" class="mobile-link">Services</a>
+      <a href="#projects" class="mobile-link">Projects</a>
+      <a href="#process" class="mobile-link">Process</a>
+      <a href="#about" class="mobile-link">About Founders</a>
+      <a href="#contact" class="mobile-link">Contact & Start Project</a>
     </div>
   </header>
 
   <main>
-    <!-- ================= 2. HERO ================= -->
+    <!-- ================= HERO ================= -->
     <section id="home" class="hero container">
       <div class="hero-badge">
-        <i data-lucide="sparkles" style="width: 15px;"></i> Direct Founder Involvement
+        <i data-lucide="sparkles" style="width: 14px;"></i> Direct Founder Involvement
       </div>
       <h1>Architecting High-Impact <span>Digital Products</span></h1>
       <p>Masterclass full-stack engineering, high-converting product UI/UX design, and scalable web platforms custom-built for modern business growth.</p>
       <div class="hero-ctas">
-        <a href="#contact" class="btn-primary">Start a Project <i data-lucide="arrow-right" style="width:16px;"></i></a>
+        <a href="#contact" class="btn-primary">Start a Project <i data-lucide="arrow-right" style="width:15px;"></i></a>
         <a href="#projects" class="btn-secondary">View Our Work</a>
-      </div>
-
-      <!-- ================= 3. TRUST & STATS ================= -->
-      <div class="stats-row">
-        <div>
-          <div class="stat-number">100%</div>
-          <div class="stat-label">Direct Founder Access</div>
-        </div>
-        <div>
-          <div class="stat-number">&lt; 1.2s</div>
-          <div class="stat-label">Average Load Performance</div>
-        </div>
-        <div>
-          <div class="stat-number">2+</div>
-          <div class="stat-label">Production Client Platforms</div>
-        </div>
-        <div>
-          <div class="stat-number">24/7</div>
-          <div class="stat-label">Post-Launch Architecture Support</div>
-        </div>
       </div>
     </section>
 
-    <!-- ================= 4. SERVICES (8 Cards) ================= -->
+    <!-- ================= SERVICES ================= -->
     <section id="services" class="section container">
       <h2 class="section-title">End-to-End Capabilities</h2>
       <p class="section-sub">Comprehensive digital craft from high-performance code to polished design systems.</p>
@@ -825,7 +806,7 @@
         <div class="service-card">
           <div class="service-icon"><i data-lucide="globe"></i></div>
           <h3 class="service-title">Full-Stack Web Development</h3>
-          <p class="service-desc">Scalable, responsive web applications engineered using modern frontend frameworks and robust backend microservices.</p>
+          <p class="service-desc">Scalable, responsive web applications engineered using modern frontend frameworks and robust backend architectures.</p>
         </div>
 
         <div class="service-card">
@@ -872,7 +853,7 @@
       </div>
     </section>
 
-    <!-- ================= 5. FEATURED PROJECTS (PulseEngine Removed) ================= -->
+    <!-- ================= FEATURED PROJECTS ================= -->
     <section id="projects" class="section container">
       <h2 class="section-title">Featured Works</h2>
       <p class="section-sub">Production web applications active in real-world commercial and educational domains.</p>
@@ -885,8 +866,8 @@
               <span class="project-tag">● Live Client Platform</span>
               <i data-lucide="gem" style="color: var(--coffee-accent); width:20px;"></i>
             </div>
-            <h3 class="section-title" style="font-size: 1.5rem; text-align: left;">Ram Brahmmam Jewelleries</h3>
-            <p style="color: var(--text-card-body); font-size: 0.95rem;">A bespoke luxury digital showroom crafted for premium traditional and modern jewelry collections. Features rapid filtering, high-resolution visual storytelling, and instant client inquiries.</p>
+            <h3 style="font-size: 1.45rem; margin-bottom: 0.6rem; color: var(--text-card-head);">Ram Brahmmam Jewelleries</h3>
+            <p style="color: var(--text-card-body); font-size: 0.94rem;">A bespoke luxury digital showroom crafted for premium traditional and modern jewelry collections. Features rapid filtering, high-resolution visual storytelling, and instant client inquiries.</p>
             <div class="project-tech">
               <span class="tech-pill">Luxury Catalog</span>
               <span class="tech-pill">Vercel Edge</span>
@@ -905,8 +886,8 @@
               <span class="project-tag">● Live Client Platform</span>
               <i data-lucide="graduation-cap" style="color: var(--coffee-accent); width:20px;"></i>
             </div>
-            <h3 class="section-title" style="font-size: 1.5rem; text-align: left;">Wonder Kids School</h3>
-            <p style="color: var(--text-card-body); font-size: 0.95rem;">An engaging, interactive preschool web portal showcasing educational curriculums, event galleries, and structured admissions touchpoints for prospective parents.</p>
+            <h3 style="font-size: 1.45rem; margin-bottom: 0.6rem; color: var(--text-card-head);">Wonder Kids School</h3>
+            <p style="color: var(--text-card-body); font-size: 0.94rem;">An engaging, interactive preschool web portal showcasing educational curriculums, event galleries, and structured admissions touchpoints for prospective parents.</p>
             <div class="project-tech">
               <span class="tech-pill">Education Portal</span>
               <span class="tech-pill">Admissions Funnel</span>
@@ -920,15 +901,14 @@
       </div>
     </section>
 
-    <!-- ================= 6. CASE STUDIES (Problem → Solution → Tech → Result) ================= -->
+    <!-- ================= CASE STUDIES ================= -->
     <section class="section container">
       <h2 class="section-title">Case Studies</h2>
       <p class="section-sub">Deconstructing real business challenges and how we architected practical software solutions.</p>
 
       <div class="case-studies-grid">
-        <!-- Case Study 1 -->
         <div class="case-card">
-          <h3 style="font-size: 1.35rem; color: var(--text-card-head);">Ram Brahmmam Jewelleries</h3>
+          <h3 style="font-size: 1.3rem; color: var(--text-card-head);">Ram Brahmmam Jewelleries</h3>
           <div class="case-flow">
             <div class="case-step">
               <span class="case-step-label">Problem</span>
@@ -936,7 +916,7 @@
             </div>
             <div class="case-step">
               <span class="case-step-label">Solution</span>
-              <span class="case-step-content">Architected a luxury-first digital catalog focused on visual fidelity and 1-click WhatsApp/Call direct inquiry mechanisms.</span>
+              <span class="case-step-content">Architected a luxury-first digital catalog focused on visual fidelity and 1-click direct inquiry mechanisms.</span>
             </div>
             <div class="case-step">
               <span class="case-step-label">Tech</span>
@@ -949,9 +929,8 @@
           </div>
         </div>
 
-        <!-- Case Study 2 -->
         <div class="case-card">
-          <h3 style="font-size: 1.35rem; color: var(--text-card-head);">Wonder Kids School</h3>
+          <h3 style="font-size: 1.3rem; color: var(--text-card-head);">Wonder Kids School</h3>
           <div class="case-flow">
             <div class="case-step">
               <span class="case-step-label">Problem</span>
@@ -974,22 +953,7 @@
       </div>
     </section>
 
-    <!-- ================= 7. TECH STACK ================= -->
-    <section class="section container" style="text-align: center;">
-      <h2 class="section-title">Modern Technology Stack</h2>
-      <p class="section-sub">We deploy battle-tested frameworks and platforms that scale seamlessly.</p>
-
-      <div class="stack-tags">
-        <span class="stack-badge"><i data-lucide="code"></i> Next.js & React</span>
-        <span class="stack-badge"><i data-lucide="terminal"></i> Python / Flask</span>
-        <span class="stack-badge"><i data-lucide="database"></i> MySQL & PostgreSQL</span>
-        <span class="stack-badge"><i data-lucide="layers"></i> Modern HTML5 / CSS3</span>
-        <span class="stack-badge"><i data-lucide="git-branch"></i> Git & GitHub</span>
-        <span class="stack-badge"><i data-lucide="cloud-rain"></i> Vercel Platform</span>
-      </div>
-    </section>
-
-    <!-- ================= 8. PROCESS (5 Steps) ================= -->
+    <!-- ================= PROCESS ================= -->
     <section id="process" class="section container">
       <h2 class="section-title">Our 5-Step Process</h2>
       <p class="section-sub">A structured, transparent engineering methodology from day one to launch.</p>
@@ -998,89 +962,45 @@
         <div class="process-box">
           <div class="process-num">01</div>
           <h4 class="process-title">Discover</h4>
-          <p class="process-desc">Deep-dive discovery session to align on product goals, target audience, and business KPIs.</p>
+          <p class="process-desc">Discovery session to align on product goals, audience, and KPIs.</p>
         </div>
-
         <div class="process-box">
           <div class="process-num">02</div>
           <h4 class="process-title">Design</h4>
-          <p class="process-desc">Crafting tailored design prototypes, typography hierarchies, and mobile responsiveness.</p>
+          <p class="process-desc">Tailored design prototypes and mobile-responsive wireframes.</p>
         </div>
-
         <div class="process-box">
           <div class="process-num">03</div>
           <h4 class="process-title">Develop</h4>
-          <p class="process-desc">Translating wireframes into clean, performant, and maintainable production code.</p>
+          <p class="process-desc">Clean, maintainable, and high-performance production code.</p>
         </div>
-
         <div class="process-box">
           <div class="process-num">04</div>
           <h4 class="process-title">Deploy</h4>
-          <p class="process-desc">Cloud setup, speed audits, security checks, and live domain configuration.</p>
+          <p class="process-desc">Cloud setup, speed audits, security, and live domain configuration.</p>
         </div>
-
         <div class="process-box">
           <div class="process-num">05</div>
           <h4 class="process-title">Support</h4>
-          <p class="process-desc">Continuous post-launch enhancements, monitoring, and architectural scaling.</p>
+          <p class="process-desc">Continuous monitoring, architectural scaling, and maintenance.</p>
         </div>
       </div>
     </section>
 
-    <!-- ================= 9. WHY SNĀTAK.DEV ================= -->
-    <section id="about" class="section container">
-      <h2 class="section-title">Why Partner With Us?</h2>
-      <p class="section-sub">We eliminate corporate layers so you build directly with technical founders.</p>
-
-      <div class="why-grid">
-        <div class="why-card">
-          <i data-lucide="users" style="color: var(--coffee-accent); margin-bottom: 1rem;"></i>
-          <h3 style="font-size: 1.25rem; margin-bottom: 0.6rem; color: var(--text-card-head);">Zero Middlemen</h3>
-          <p style="color: var(--text-card-body); font-size: 0.92rem;">Direct collaboration with senior engineers and designers on every build. Your vision isn't lost in translation.</p>
-        </div>
-
-        <div class="why-card">
-          <i data-lucide="gauge" style="color: var(--coffee-accent); margin-bottom: 1rem;"></i>
-          <h3 style="font-size: 1.25rem; margin-bottom: 0.6rem; color: var(--text-card-head);">Performance by Default</h3>
-          <p style="color: var(--text-card-body); font-size: 0.92rem;">No bloated templates. We write lean, modern code designed for lightning-fast page loading and high conversion.</p>
-        </div>
-
-        <div class="why-card">
-          <i data-lucide="shield-check" style="color: var(--coffee-accent); margin-bottom: 1rem;"></i>
-          <h3 style="font-size: 1.25rem; margin-bottom: 0.6rem; color: var(--text-card-head);">Reliable Ownership</h3>
-          <p style="color: var(--text-card-body); font-size: 0.92rem;">From local retailers to educational institutions, we treat client deadlines with institutional-level accountability.</p>
-        </div>
-      </div>
-    </section>
-
-    <!-- ================= 10. TESTIMONIALS ================= -->
-    <section class="section container">
-      <h2 class="section-title">Client Perspectives</h2>
-      <p class="section-sub">What our project partners say about executing with snātak.dev.</p>
-
-      <div class="testimonials-grid">
-        <div class="testimonial-card">
-          <p>“The snātak.dev team delivered a digital catalog that matched our traditional gold & diamond values with modern speed. The direct involvement of the founders made every revision effortless.”</p>
-          <div class="testimonial-author">
-            <i data-lucide="quote" style="width: 16px; color: var(--coffee-accent);"></i> Ram Brahmmam Jewelleries
-          </div>
-        </div>
-
-        <div class="testimonial-card">
-          <p>“Our admissions inquiry workflow became significantly easier once Wonder Kids went live. Parents find the site clean, fast, and informative on their mobile phones.”</p>
-          <div class="testimonial-author">
-            <i data-lucide="quote" style="width: 16px; color: var(--coffee-accent);"></i> Wonder Kids Administration
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- ================= 11. START A PROJECT (FORM) ================= -->
+    <!-- ================= START A PROJECT + DIRECT WHATSAPP ================= -->
     <section id="contact" class="section container">
       <h2 class="section-title">Start a Project</h2>
-      <p class="section-sub">Have an idea or need to modernize your web architecture? Let's talk.</p>
+      <p class="section-sub">Ready to build or modernize your platform? Connect with us directly or drop a note.</p>
 
-      <div class="project-form-wrap">
+      <div class="contact-container">
+        <!-- Direct WhatsApp Chat Option -->
+        <div class="whatsapp-banner">
+          <p style="font-weight: 600; color: var(--text-card-head); font-size: 1rem;">Prefer instant messaging? Chat with the founders directly:</p>
+          <a href="https://wa.me/918897798251?text=Hello%20snatak.dev%20team,%20I%20would%20like%20to%20discuss%20a%20project." target="_blank" rel="noopener noreferrer" class="btn-whatsapp">
+            <i data-lucide="message-circle" style="width: 18px;"></i> Chat on WhatsApp (+91 88977 98251)
+          </a>
+        </div>
+
         <form action="mailto:chellurichandu13@gmail.com" method="POST" enctype="text/plain">
           <div class="form-group">
             <label class="form-label">Full Name</label>
@@ -1107,15 +1027,15 @@
             <textarea name="details" rows="4" class="form-textarea" placeholder="Describe your timeline, targets, and features..." required></textarea>
           </div>
 
-          <button type="submit" class="btn-primary" style="width: 100%; justify-content: center; padding: 0.9rem;">
+          <button type="submit" class="btn-primary" style="width: 100%; justify-content: center; padding: 0.85rem;">
             Send Inquiry Directly <i data-lucide="send" style="width: 16px;"></i>
           </button>
         </form>
       </div>
     </section>
 
-    <!-- ================= 12. MEET THE FOUNDERS ================= -->
-    <section class="section container">
+    <!-- ================= FOUNDERS ================= -->
+    <section id="about" class="section container">
       <h2 class="section-title">Meet the Founders</h2>
       <p class="section-sub">Direct developer & designer ownership on every single build.</p>
 
@@ -1123,9 +1043,9 @@
         <!-- Dinesh -->
         <div class="founder-card">
           <div>
-            <h3 style="font-size: 1.4rem; color: var(--text-card-head);">Budidha Dinesh Goud</h3>
+            <h3 style="font-size: 1.35rem; color: var(--text-card-head);">Budidha Dinesh Goud</h3>
             <div class="founder-role">Lead Tech Architect & Growth</div>
-            <p style="color: var(--text-card-body); font-size: 0.92rem; margin-bottom: 1.5rem;">Full-stack engineering, web performance optimization, and client solution strategy.</p>
+            <p style="color: var(--text-card-body); font-size: 0.9rem; margin-bottom: 1.4rem;">Full-stack engineering, web performance optimization, and client solution strategy.</p>
           </div>
           <div class="founder-contacts">
             <a href="mailto:dineshgoudb@gmail.com" class="contact-row">
@@ -1140,9 +1060,9 @@
         <!-- Sai Pranith -->
         <div class="founder-card">
           <div>
-            <h3 style="font-size: 1.4rem; color: var(--text-card-head);">M. Sai Pranith</h3>
+            <h3 style="font-size: 1.35rem; color: var(--text-card-head);">M. Sai Pranith</h3>
             <div class="founder-role">UI/UX & Product Lead</div>
-            <p style="color: var(--text-card-body); font-size: 0.92rem; margin-bottom: 1.5rem;">Product design systems, digital catalog aesthetics, and responsive layout design.</p>
+            <p style="color: var(--text-card-body); font-size: 0.9rem; margin-bottom: 1.4rem;">Product design systems, digital catalog aesthetics, and responsive layout design.</p>
           </div>
           <div class="founder-contacts">
             <a href="mailto:saipranith876@gmail.com" class="contact-row">
@@ -1157,9 +1077,9 @@
         <!-- Chandra Shekar -->
         <div class="founder-card">
           <div>
-            <h3 style="font-size: 1.4rem; color: var(--text-card-head);">Chelluri Chandra Shekar</h3>
+            <h3 style="font-size: 1.35rem; color: var(--text-card-head);">Chelluri Chandra Shekar</h3>
             <div class="founder-role">Design & Operations Lead</div>
-            <p style="color: var(--text-card-body); font-size: 0.92rem; margin-bottom: 1.5rem;">Interactive UI development, project delivery schedules, and client relations.</p>
+            <p style="color: var(--text-card-body); font-size: 0.9rem; margin-bottom: 1.4rem;">Interactive UI development, project delivery schedules, and client relations.</p>
           </div>
           <div class="founder-contacts">
             <a href="mailto:chellurichandu13@gmail.com" class="contact-row">
@@ -1174,44 +1094,40 @@
     </section>
   </main>
 
-  <!-- ================= 13. FOOTER ================= -->
+  <!-- ================= FOOTER ================= -->
   <footer>
     <div class="container">
       <div class="footer-wrapper">
         <div style="display: flex; align-items: center; gap: 10px;">
-          <div class="brand-emblem-wrap" style="width: 32px; height: 32px;">
-            <img src="assets/emblem.jpeg" alt="snātak emblem" class="brand-emblem-img" />
-          </div>
           <span style="font-family:'Syne'; font-weight:800; color:#FFF; font-size:1.15rem;">snātak.dev</span>
         </div>
 
-        <!-- Direct Socials & Contact Links -->
         <div class="footer-socials">
           <a href="https://github.com/chandra13-chcs" target="_blank" rel="noopener noreferrer" class="footer-social-btn">
-            <i data-lucide="github" style="width: 17px;"></i> GitHub
+            <i data-lucide="github" style="width: 16px;"></i> GitHub
           </a>
           <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" class="footer-social-btn">
-            <i data-lucide="linkedin" style="width: 17px;"></i> LinkedIn
+            <i data-lucide="linkedin" style="width: 16px;"></i> LinkedIn
           </a>
           <a href="https://wa.me/918897798251" target="_blank" rel="noopener noreferrer" class="footer-social-btn">
-            <i data-lucide="message-circle" style="width: 17px;"></i> WhatsApp
+            <i data-lucide="message-circle" style="width: 16px;"></i> WhatsApp
           </a>
           <a href="mailto:chellurichandu13@gmail.com" class="footer-social-btn">
-            <i data-lucide="mail" style="width: 17px;"></i> Email
+            <i data-lucide="mail" style="width: 16px;"></i> Email
           </a>
         </div>
       </div>
-      <p style="text-align: center; font-size: 0.88rem; border-top: 1px solid rgba(255,255,255,0.06); padding-top: 1.5rem;">
+      <p style="text-align: center; font-size: 0.86rem; border-top: 1px solid rgba(255,255,255,0.06); padding-top: 1.4rem;">
         © 2026 <strong>snātak.dev</strong>. High-Performance Software Architecture & Modern Digital Craft.
       </p>
     </div>
   </footer>
 
-  <!-- Lucide & Theme Script -->
+  <!-- Scripts -->
   <script>
     lucide.createIcons();
 
-    // Theme Toggle Logic with Persistence
+    // Theme Toggle Logic
     const themeToggleBtn = document.getElementById('themeToggleBtn');
     const themeIcon = document.getElementById('themeIcon');
     const root = document.documentElement;
@@ -1235,6 +1151,29 @@
       }
       lucide.createIcons();
     }
+
+    // Mobile Drawer Navigation Toggle
+    const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+    const mobileNavDrawer = document.getElementById('mobileNavDrawer');
+    const menuIcon = document.getElementById('menuIcon');
+
+    mobileMenuBtn.addEventListener('click', () => {
+      const isOpen = mobileNavDrawer.classList.toggle('open');
+      if (isOpen) {
+        menuIcon.setAttribute('data-lucide', 'x');
+      } else {
+        menuIcon.setAttribute('data-lucide', 'menu');
+      }
+      lucide.createIcons();
+    });
+
+    document.querySelectorAll('.mobile-link').forEach(link => {
+      link.addEventListener('click', () => {
+        mobileNavDrawer.classList.remove('open');
+        menuIcon.setAttribute('data-lucide', 'menu');
+        lucide.createIcons();
+      });
+    });
   </script>
 </body>
 </html>
