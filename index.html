@@ -1,0 +1,630 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>snātak.dev | Modern Software & Digital Craft</title>
+
+  <!-- Google Fonts: Syne & Plus Jakarta Sans -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700&family=Syne:wght@700;800&display=swap" rel="stylesheet">
+
+  <!-- Lucide Icons -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+
+  <style>
+    :root {
+      /* Background Warm Architectural Cream */
+      --bg-cream: #FAF5EE;
+      --bg-cream-soft: #F2ECE1;
+      --border-cream: #E5DACB;
+
+      /* Header Black */
+      --header-black: #0B0B0D;
+      --header-border: rgba(255, 255, 255, 0.12);
+
+      /* Rich Coffee Brown for Cards */
+      --card-coffee: #221610;
+      --card-coffee-deep: #1A100B;
+      --card-border-coffee: rgba(199, 142, 92, 0.28);
+      --coffee-accent: #C78A58;
+      --coffee-accent-glow: rgba(199, 138, 88, 0.25);
+
+      /* Typography */
+      --text-heading: #121214;
+      --text-body: #4A4641;
+      --text-muted: #827B73;
+      --text-card-head: #FFFFFF;
+      --text-card-body: #D4C9BF;
+
+      --radius: 18px;
+      --shadow-coffee: 0 16px 36px rgba(26, 16, 11, 0.22);
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      scroll-behavior: smooth;
+    }
+
+    body {
+      background-color: var(--bg-cream);
+      color: var(--text-body);
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      line-height: 1.65;
+      overflow-x: hidden;
+      background-image: 
+        radial-gradient(circle at 12% 15%, rgba(229, 218, 203, 0.6) 0%, transparent 40%),
+        radial-gradient(circle at 88% 70%, rgba(199, 138, 88, 0.12) 0%, transparent 45%);
+    }
+
+    h1, h2, h3 {
+      font-family: 'Syne', sans-serif;
+      letter-spacing: -0.025em;
+    }
+
+    /* 1. Pure Black Header */
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: var(--header-black);
+      backdrop-filter: blur(18px);
+      border-bottom: 1px solid var(--header-border);
+    }
+
+    .nav-container {
+      max-width: 1200px;
+      margin: auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 0.85rem 2rem;
+    }
+
+    /* Original Brand Logo with assets/emblem.jpeg */
+    .brand-logo-container {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      text-decoration: none;
+    }
+
+    .brand-emblem-wrap {
+      width: 42px;
+      height: 42px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 10px;
+      overflow: hidden;
+      background: #000;
+      border: 1px solid rgba(199, 138, 88, 0.4);
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
+    }
+
+    .brand-emblem-img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      mix-blend-mode: screen;
+    }
+
+    .brand-title-exact {
+      font-family: 'Syne', sans-serif;
+      font-size: 1.5rem;
+      font-weight: 800;
+      color: #FFFFFF;
+      letter-spacing: -0.02em;
+    }
+
+    .brand-title-exact .accent-curve {
+      color: #FFFFFF;
+    }
+
+    .brand-title-exact .dot-dev {
+      color: var(--coffee-accent);
+      font-weight: 700;
+    }
+
+    /* Navigation Links & Dark Button */
+    .nav-links {
+      display: flex;
+      gap: 2.2rem;
+      align-items: center;
+    }
+
+    .nav-links a.nav-item {
+      color: #E2D9D0;
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 0.94rem;
+      transition: color 0.2s;
+    }
+
+    .nav-links a.nav-item:hover {
+      color: var(--coffee-accent);
+    }
+
+    .btn-start {
+      background: linear-gradient(135deg, #2E1D14 0%, #150E0A 100%);
+      color: #FAF5EE !important;
+      padding: 0.65rem 1.4rem;
+      border-radius: 999px;
+      font-weight: 600;
+      font-size: 0.9rem;
+      text-decoration: none;
+      border: 1px solid var(--coffee-accent);
+      box-shadow: 0 4px 16px rgba(0, 0, 0, 0.5);
+      transition: all 0.25s ease;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .btn-start:hover {
+      background: var(--coffee-accent);
+      color: #121214 !important;
+      transform: translateY(-2px);
+      box-shadow: 0 6px 20px var(--coffee-accent-glow);
+    }
+
+    /* Section Global */
+    .section {
+      max-width: 1200px;
+      margin: auto;
+      padding: 5.5rem 2rem;
+    }
+
+    .section-title {
+      text-align: center;
+      font-size: 2.85rem;
+      margin-bottom: 0.6rem;
+      color: var(--text-heading);
+    }
+
+    .section-sub {
+      text-align: center;
+      color: var(--text-muted);
+      max-width: 620px;
+      margin: 0 auto 3.6rem auto;
+      font-size: 1.05rem;
+    }
+
+    /* Hero */
+    .hero {
+      text-align: center;
+      padding: 6.5rem 2rem 4.5rem;
+      max-width: 980px;
+      margin: auto;
+    }
+
+    .hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 7px 18px;
+      background: #FFFFFF;
+      border: 1px solid var(--border-cream);
+      border-radius: 999px;
+      color: #6E3B16;
+      font-size: 0.88rem;
+      font-weight: 600;
+      margin-bottom: 1.8rem;
+      box-shadow: 0 6px 20px rgba(0,0,0,0.04);
+    }
+
+    .hero h1 {
+      font-size: 4rem;
+      line-height: 1.15;
+      margin-bottom: 1.5rem;
+      color: var(--text-heading);
+    }
+
+    .hero h1 .highlight-coffee {
+      color: #7A3F17;
+    }
+
+    .hero p {
+      color: var(--text-body);
+      font-size: 1.25rem;
+      max-width: 740px;
+      margin: 0 auto 2.5rem;
+    }
+
+    .hero-ctas {
+      display: flex;
+      justify-content: center;
+      gap: 1.2rem;
+      align-items: center;
+    }
+
+    .btn-hero-dark {
+      background: #16100D;
+      color: #FFF;
+      padding: 0.75rem 1.6rem;
+      border-radius: 999px;
+      font-weight: 600;
+      font-size: 0.95rem;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      border: 1px solid rgba(255,255,255,0.1);
+      box-shadow: 0 6px 20px rgba(0,0,0,0.18);
+      transition: all 0.25s ease;
+    }
+
+    .btn-hero-dark:hover {
+      background: #2E1D14;
+      transform: translateY(-2px);
+    }
+
+    .btn-hero-secondary {
+      padding: 0.75rem 1.6rem;
+      border-radius: 999px;
+      border: 1px solid var(--border-cream);
+      background: #FFFFFF;
+      color: var(--text-heading);
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 0.95rem;
+      transition: all 0.2s ease;
+    }
+
+    .btn-hero-secondary:hover {
+      background: var(--bg-cream-soft);
+    }
+
+    /* Coffee Brown Cards */
+    .projects-grid, .founders-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+      gap: 2.2rem;
+    }
+
+    .coffee-card {
+      background: linear-gradient(165deg, var(--card-coffee) 0%, var(--card-coffee-deep) 100%);
+      border: 1px solid var(--card-border-coffee);
+      border-radius: var(--radius);
+      padding: 2.4rem;
+      box-shadow: var(--shadow-coffee);
+      transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    .coffee-card:hover {
+      transform: translateY(-8px);
+      border-color: var(--coffee-accent);
+      box-shadow: 0 22px 48px rgba(26, 16, 11, 0.35);
+    }
+
+    .card-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 1.4rem;
+    }
+
+    .project-tag {
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      font-weight: 700;
+      letter-spacing: 0.06em;
+      padding: 5px 12px;
+      border-radius: 6px;
+    }
+
+    .tag-live {
+      background: rgba(46, 196, 107, 0.15);
+      color: #55E48C;
+      border: 1px solid rgba(46, 196, 107, 0.3);
+    }
+
+    .tag-flagship {
+      background: rgba(199, 138, 88, 0.2);
+      color: var(--coffee-accent);
+      border: 1px solid var(--coffee-accent);
+    }
+
+    .card-title {
+      font-size: 1.5rem;
+      margin-bottom: 0.8rem;
+      color: var(--text-card-head);
+    }
+
+    .card-desc {
+      color: var(--text-card-body);
+      font-size: 0.96rem;
+      line-height: 1.65;
+      margin-bottom: 1.6rem;
+    }
+
+    .tech-stack {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 1.8rem;
+    }
+
+    .tech-chip {
+      background: rgba(255, 255, 255, 0.06);
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      font-size: 0.78rem;
+      font-weight: 500;
+      padding: 4px 11px;
+      border-radius: 999px;
+      color: #E2D9D0;
+    }
+
+    .card-link-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      color: #FAF5EE;
+      text-decoration: none;
+      font-size: 0.95rem;
+      font-weight: 600;
+      border-top: 1px solid rgba(255, 255, 255, 0.1);
+      padding-top: 1.2rem;
+      transition: color 0.2s;
+    }
+
+    .card-link-btn:hover {
+      color: var(--coffee-accent);
+    }
+
+    .founder-icon-box {
+      width: 52px;
+      height: 52px;
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 1.4rem;
+      background: rgba(199, 138, 88, 0.14);
+      border: 1px solid var(--card-border-coffee);
+      color: var(--coffee-accent);
+    }
+
+    .founder-role {
+      font-size: 0.85rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      color: var(--coffee-accent);
+      margin-bottom: 1.1rem;
+    }
+
+    .founder-contacts {
+      border-top: 1px solid rgba(255, 255, 255, 0.1);
+      padding-top: 1.2rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.65rem;
+    }
+
+    .contact-row {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      color: var(--text-card-body);
+      font-size: 0.88rem;
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+
+    .contact-row:hover {
+      color: #FFFFFF;
+    }
+
+    /* Footer */
+    footer {
+      border-top: 1px solid var(--header-border);
+      background: var(--header-black);
+      padding: 3.5rem 2rem;
+      text-align: center;
+      color: #9C948B;
+      font-size: 0.92rem;
+    }
+
+    footer strong {
+      color: #FFFFFF;
+    }
+
+    @media (max-width: 768px) {
+      .hero h1 { font-size: 2.7rem; }
+      .nav-links { display: none; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Pure Black Header with assets/emblem.jpeg Image & Brand Name -->
+  <header>
+    <div class="nav-container">
+      <a href="#" class="brand-logo-container">
+        <div class="brand-emblem-wrap">
+          <!-- Matches your assets/emblem.jpeg in VS Code -->
+          <img src="assets/emblem.jpeg" alt="snātak emblem" class="brand-emblem-img" />
+        </div>
+        <span class="brand-title-exact">
+          sn<span class="accent-curve">ã</span>tak<span class="dot-dev">.dev</span>
+        </span>
+      </a>
+
+      <div class="nav-links">
+        <a href="#projects" class="nav-item">Work</a>
+        <a href="#founders" class="nav-item">Founders</a>
+        <a href="mailto:chellurichandu13@gmail.com" class="btn-start">
+          Start Project <i data-lucide="arrow-right" style="width:16px;"></i>
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <!-- Hero Section -->
+    <section class="hero">
+      <div class="hero-badge">
+        <i data-lucide="sparkles" style="width: 15px;"></i> Direct Founder Involvement
+      </div>
+      <h1>Architecting High-Impact <span class="highlight-coffee">Digital Products</span></h1>
+      <p>Masterclass full-stack engineering, high-converting product UI/UX design, and scalable platforms built for modern businesses.</p>
+      <div class="hero-ctas">
+        <a href="#projects" class="btn-hero-dark">View Live Projects <i data-lucide="arrow-right" style="width:16px;"></i></a>
+        <a href="#founders" class="btn-hero-secondary">Meet Founders</a>
+      </div>
+    </section>
+
+    <!-- Projects Section (Coffee Brown Cards) -->
+    <section id="projects" class="section">
+      <h2 class="section-title">Featured Works</h2>
+      <p class="section-sub">Production web applications built with speed, clarity, and elegance.</p>
+
+      <div class="projects-grid">
+        <!-- Live Project 1: Ram Brahmmam Jewelleries -->
+        <div class="coffee-card">
+          <div>
+            <div class="card-top">
+              <span class="project-tag tag-live">● Live Client Project</span>
+              <i data-lucide="gem" style="color: var(--coffee-accent); width:20px;"></i>
+            </div>
+            <h3 class="card-title">Ram Brahmmam Jewelleries</h3>
+            <p class="card-desc">A luxury digital catalog for gold and diamond collections with sleek visual presentation, mobile responsiveness, and high-conversion showcases.</p>
+            <div class="tech-stack">
+              <span class="tech-chip">E-Commerce Catalog</span>
+              <span class="tech-chip">Vercel Deployment</span>
+              <span class="tech-chip">Luxury UI/UX</span>
+            </div>
+          </div>
+          <a href="https://ram-brahmmam-jewelleries.vercel.app/" target="_blank" rel="noopener noreferrer" class="card-link-btn">
+            Visit Live Website <i data-lucide="external-link" style="width:16px;"></i>
+          </a>
+        </div>
+
+        <!-- Live Project 2: Wonder Kids -->
+        <div class="coffee-card">
+          <div>
+            <div class="card-top">
+              <span class="project-tag tag-live">● Live Client Project</span>
+              <i data-lucide="graduation-cap" style="color: var(--coffee-accent); width:20px;"></i>
+            </div>
+            <h3 class="card-title">Wonder Kids School</h3>
+            <p class="card-desc">A vibrant, interactive preschool and early education web portal facilitating curriculum showcase, activity galleries, and seamless parent inquiries.</p>
+            <div class="tech-stack">
+              <span class="tech-chip">Educational Web</span>
+              <span class="tech-chip">Admissions Portal</span>
+              <span class="tech-chip">Responsive Design</span>
+            </div>
+          </div>
+          <a href="https://wonder-kids-website-vercel.vercel.app/" target="_blank" rel="noopener noreferrer" class="card-link-btn">
+            Visit Live Website <i data-lucide="external-link" style="width:16px;"></i>
+          </a>
+        </div>
+
+        <!-- Flagship Project: PulseEngine SaaS -->
+        <div class="coffee-card" style="border: 1.5px solid var(--coffee-accent);">
+          <div>
+            <div class="card-top">
+              <span class="project-tag tag-flagship">★ Flagship Product</span>
+              <i data-lucide="rocket" style="color: var(--coffee-accent); width:20px;"></i>
+            </div>
+            <h3 class="card-title">PulseEngine SaaS</h3>
+            <p class="card-desc">An all-in-one local commerce and delivery orchestration suite built to connect regional vendors, inventory sync, and live route management.</p>
+            <div class="tech-stack">
+              <span class="tech-chip">Next.js</span>
+              <span class="tech-chip">Micro-Services</span>
+              <span class="tech-chip">Hyperlocal Tech</span>
+            </div>
+          </div>
+          <a href="#founders" class="card-link-btn" style="color: var(--coffee-accent);">
+            In Development • Contact Us <i data-lucide="arrow-right" style="width:16px;"></i>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Founders Section (Coffee Brown Cards) -->
+    <section id="founders" class="section">
+      <h2 class="section-title">Meet the Founders</h2>
+      <p class="section-sub">Direct developer & designer involvement on every single build.</p>
+
+      <div class="founders-grid">
+        <!-- Dinesh -->
+        <div class="coffee-card">
+          <div>
+            <div class="founder-icon-box">
+              <i data-lucide="code-2"></i>
+            </div>
+            <h3 class="card-title">Budidha Dinesh Goud</h3>
+            <div class="founder-role">Lead Tech Architect & Growth</div>
+            <p class="card-desc">Full-stack engineering, web performance optimization, and client solution strategy.</p>
+          </div>
+          <div class="founder-contacts">
+            <a href="mailto:dineshgoudb@gmail.com" class="contact-row">
+              <i data-lucide="mail" style="width: 16px;"></i> dineshgoudb@gmail.com
+            </a>
+            <a href="tel:+917981615788" class="contact-row">
+              <i data-lucide="phone" style="width: 16px;"></i> +91 79816 15788
+            </a>
+          </div>
+        </div>
+
+        <!-- Sai Pranith -->
+        <div class="coffee-card">
+          <div>
+            <div class="founder-icon-box">
+              <i data-lucide="palette"></i>
+            </div>
+            <h3 class="card-title">M. Sai Pranith</h3>
+            <div class="founder-role">UI/UX & Product Lead</div>
+            <p class="card-desc">Product design systems, digital catalog aesthetics, and responsive layout design.</p>
+          </div>
+          <div class="founder-contacts">
+            <a href="mailto:saipranith876@gmail.com" class="contact-row">
+              <i data-lucide="mail" style="width: 16px;"></i> saipranith876@gmail.com
+            </a>
+            <a href="tel:+918309772422" class="contact-row">
+              <i data-lucide="phone" style="width: 16px;"></i> +91 83097 72422
+            </a>
+          </div>
+        </div>
+
+        <!-- Chandra Shekar -->
+        <div class="coffee-card">
+          <div>
+            <div class="founder-icon-box">
+              <i data-lucide="briefcase"></i>
+            </div>
+            <h3 class="card-title">Chelluri Chandra Shekar</h3>
+            <div class="founder-role">Design & Operations Lead</div>
+            <p class="card-desc">Interactive UI development, project delivery schedules, and client relations.</p>
+          </div>
+          <div class="founder-contacts">
+            <a href="mailto:chellurichandu13@gmail.com" class="contact-row">
+              <i data-lucide="mail" style="width: 16px;"></i> chellurichandu13@gmail.com
+            </a>
+            <a href="tel:+918897798251" class="contact-row">
+              <i data-lucide="phone" style="width: 16px;"></i> +91 88977 98251
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer in Matching Black -->
+  <footer>
+    <p>© 2026 <strong>snātak.dev</strong>. All rights reserved. Architectural Code & High-Performance Design.</p>
+  </footer>
+
+  <script>
+    lucide.createIcons();
+  </script>
+</body>
+</html>
