@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>snātak.dev | Modern Software Architecture & Digital Craft</title>
   
-  <!-- Premium Fonts -->
+  <!-- Premium Google Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700&family=Syne:wght@700;800&display=swap" rel="stylesheet">
@@ -15,63 +15,62 @@
 
   <style>
     /* =========================================
-       THEME VARIABLES
+       THEME PALETTE: AUTHENTIC RICH CREAM & COFFEE
     ========================================= */
     :root[data-theme="dark"] {
-      --bg-page: #0B0B0E;
-      --bg-page-subtle: #141318;
+      --bg-page: #0C0A09;              /* Deep Warm Obsidian */
+      --bg-surface: #14110F;           /* Roasted Coffee Surface */
       
-      /* Distinct Solid Dark Header */
-      --bg-header: #08080A;
-      --header-border: rgba(199, 138, 88, 0.25);
-      --header-shadow: 0 4px 20px rgba(0, 0, 0, 0.6);
+      --bg-header: #080706;
+      --header-border: rgba(199, 138, 88, 0.22);
+      --header-shadow: 0 4px 20px rgba(0, 0, 0, 0.7);
       
-      --card-bg: linear-gradient(165deg, #221610 0%, #150E0A 100%);
-      --card-border: rgba(199, 138, 88, 0.28);
+      --card-bg: linear-gradient(160deg, #1C1410 0%, #100B08 100%);
+      --card-border: rgba(199, 138, 88, 0.22);
       --card-hover-border: #C78A58;
       
-      --text-main: #FAF5EE;
-      --text-muted: #A39B92;
+      --text-main: #FBF7F0;
+      --text-muted: #9E948A;
       --text-card-head: #FFFFFF;
-      --text-card-body: #D4C9BF;
+      --text-card-body: #D4C8BC;
       
       --coffee-accent: #C78A58;
       --coffee-glow: rgba(199, 138, 88, 0.25);
-      --badge-bg: rgba(199, 138, 88, 0.14);
-      --badge-border: rgba(199, 138, 88, 0.4);
+      --badge-bg: rgba(199, 138, 88, 0.12);
+      --badge-border: rgba(199, 138, 88, 0.35);
       
       --input-bg: rgba(255, 255, 255, 0.04);
       --input-border: rgba(255, 255, 255, 0.12);
-      --footer-bg: #070709;
+      --footer-bg: #070605;
       --logo-filter: invert(1);
     }
 
     :root[data-theme="light"] {
-      --bg-page: #FAF5EE;
-      --bg-page-subtle: #F2EAE0;
+      /* Authentic Muted Cream Tone - NOT blindingly white */
+      --bg-page: #F3ECE4;              /* Soft Vintage Almond Cream */
+      --bg-surface: #E8DFD5;           /* Matte Architectural Cream */
       
-      /* Light Mode లో కూడా హెడర్ కలిసిపోకుండా Solid Charcoal Black Bar */
-      --bg-header: #121215;
-      --header-border: #2E2620;
-      --header-shadow: 0 6px 25px rgba(26, 16, 11, 0.12);
+      --bg-header: #12100E;            /* Bold Luxury Dark Bar */
+      --header-border: #2C241D;
+      --header-shadow: 0 6px 25px rgba(28, 20, 16, 0.15);
       
-      --card-bg: #FFFFFF;
-      --card-border: #E5DACB;
+      --card-bg: #FAF5EE;
+      --card-border: #DBCFBF;
       --card-hover-border: #8A532B;
       
-      --text-main: #141210;
-      --text-muted: #6B655E;
-      --text-card-head: #141210;
-      --text-card-body: #4A4641;
+      --text-main: #181411;
+      --text-muted: #695E55;
+      --text-card-head: #181411;
+      --text-card-body: #4A4036;
       
       --coffee-accent: #8A532B;
       --coffee-glow: rgba(138, 83, 43, 0.15);
-      --badge-bg: #F2EAE0;
-      --badge-border: #DBC8B5;
+      --badge-bg: #E8DDD2;
+      --badge-border: #D1C2B2;
       
       --input-bg: #FFFFFF;
-      --input-border: #DBC8B5;
-      --footer-bg: #141210;
+      --input-border: #D1C2B2;
+      --footer-bg: #12100E;
       --logo-filter: invert(1);
     }
 
@@ -87,7 +86,7 @@
       color: var(--text-main);
       font-family: 'Plus Jakarta Sans', sans-serif;
       line-height: 1.6;
-      transition: background-color 0.3s ease, color 0.3s ease;
+      transition: background-color 0.35s ease, color 0.35s ease;
       overflow-x: hidden;
     }
 
@@ -97,31 +96,31 @@
     }
 
     .container {
-      max-width: 1140px;
+      max-width: 1120px;
       margin: 0 auto;
-      padding: 0 1.5rem;
+      padding: 0 1.25rem;
     }
 
     .section {
-      padding: 4.5rem 0;
+      padding: 4rem 0;
     }
 
     .section-title {
       text-align: center;
-      font-size: 2.5rem;
-      margin-bottom: 0.5rem;
+      font-size: 2.35rem;
+      margin-bottom: 0.4rem;
     }
 
     .section-sub {
       text-align: center;
       color: var(--text-muted);
-      max-width: 600px;
-      margin: 0 auto 3rem auto;
-      font-size: 1rem;
+      max-width: 580px;
+      margin: 0 auto 2.8rem auto;
+      font-size: 0.95rem;
     }
 
     /* =========================================
-       1. DISTINCT SOLID HEADER (కింద పేజీతో కలవదు)
+       1. HEADER (ELEVATED SOLID LUXURY BAR)
     ========================================= */
     header {
       position: sticky;
@@ -136,7 +135,7 @@
       display: flex;
       justify-content: space-between;
       align-items: center;
-      padding: 0.85rem 0;
+      padding: 0.75rem 0;
     }
 
     .brand-logo-container {
@@ -147,8 +146,8 @@
     }
 
     .brand-emblem-wrap {
-      width: 38px;
-      height: 38px;
+      width: 36px;
+      height: 36px;
       display: flex;
       align-items: center;
       justify-content: center;
@@ -167,9 +166,9 @@
 
     .brand-title-exact {
       font-family: 'Syne', sans-serif;
-      font-size: 1.45rem;
+      font-size: 1.35rem;
       font-weight: 800;
-      color: #FFFFFF !important; /* ఎల్లప్పుడూ డార్క్ హెడర్‌లో తెల్లగా క్లియర్‌గా ఉంటుంది */
+      color: #FFFFFF !important;
       letter-spacing: -0.02em;
     }
 
@@ -177,10 +176,9 @@
       color: var(--coffee-accent);
     }
 
-    /* Header Navigation Links (Always Bright against Header) */
     .nav-links {
       display: flex;
-      gap: 1.8rem;
+      gap: 1.6rem;
       align-items: center;
     }
 
@@ -188,7 +186,7 @@
       color: #D1C7BD;
       text-decoration: none;
       font-weight: 600;
-      font-size: 0.92rem;
+      font-size: 0.9rem;
       transition: color 0.2s;
     }
 
@@ -199,7 +197,7 @@
     .nav-actions {
       display: flex;
       align-items: center;
-      gap: 10px;
+      gap: 8px;
     }
 
     .icon-btn {
@@ -224,7 +222,6 @@
       display: none;
     }
 
-    /* Mobile Dropdown Drawer */
     .mobile-nav-drawer {
       display: none;
       position: absolute;
@@ -235,7 +232,7 @@
       border-bottom: 2px solid var(--coffee-accent);
       padding: 1.2rem 1.5rem;
       flex-direction: column;
-      gap: 1rem;
+      gap: 0.9rem;
       box-shadow: 0 12px 30px rgba(0,0,0,0.5);
       z-index: 99;
     }
@@ -248,34 +245,30 @@
       color: #FFFFFF;
       text-decoration: none;
       font-weight: 600;
-      font-size: 1.05rem;
-      padding: 0.5rem 0;
+      font-size: 1rem;
+      padding: 0.45rem 0;
       border-bottom: 1px solid rgba(255,255,255,0.08);
-    }
-
-    .mobile-nav-drawer a:last-child {
-      border-bottom: none;
     }
 
     .mobile-nav-drawer a:hover {
       color: var(--coffee-accent);
     }
 
-    /* Common Buttons */
+    /* Buttons */
     .btn-primary {
-      background: linear-gradient(135deg, #2E1D14 0%, #150E0A 100%);
-      color: #FAF5EE !important;
+      background: linear-gradient(135deg, #2A1A12 0%, #120B07 100%);
+      color: #FBF7F0 !important;
       padding: 0.65rem 1.4rem;
       border-radius: 999px;
       font-weight: 600;
-      font-size: 0.9rem;
+      font-size: 0.88rem;
       text-decoration: none;
       border: 1px solid var(--coffee-accent);
       box-shadow: 0 4px 14px var(--coffee-glow);
       transition: all 0.25s ease;
       display: inline-flex;
       align-items: center;
-      gap: 8px;
+      gap: 7px;
       cursor: pointer;
     }
 
@@ -297,11 +290,11 @@
       color: var(--text-main);
       text-decoration: none;
       font-weight: 600;
-      font-size: 0.9rem;
+      font-size: 0.88rem;
       transition: all 0.25s ease;
       display: inline-flex;
       align-items: center;
-      gap: 8px;
+      gap: 7px;
     }
 
     .btn-secondary:hover {
@@ -311,51 +304,54 @@
     .btn-whatsapp {
       background: #128C7E;
       color: #FFF !important;
-      padding: 0.75rem 1.4rem;
+      padding: 0.72rem 1.5rem;
       border-radius: 999px;
       font-weight: 600;
-      font-size: 0.92rem;
+      font-size: 0.9rem;
       text-decoration: none;
       display: inline-flex;
       align-items: center;
       justify-content: center;
       gap: 8px;
+      white-space: nowrap;
       border: none;
+      box-shadow: 0 4px 14px rgba(18, 140, 126, 0.25);
       transition: all 0.25s ease;
     }
 
     .btn-whatsapp:hover {
       background: #075E54;
       transform: translateY(-2px);
-      box-shadow: 0 4px 15px rgba(18, 140, 126, 0.35);
+      box-shadow: 0 6px 18px rgba(18, 140, 126, 0.4);
     }
 
     /* =========================================
-       2. HERO SECTION
+       2. HERO (COMPACT & CRISP)
     ========================================= */
     .hero {
       text-align: center;
-      padding: 4.5rem 0 3.5rem;
+      padding: 3.2rem 0 2.4rem;
     }
 
     .hero-badge {
       display: inline-flex;
       align-items: center;
       gap: 6px;
-      padding: 6px 16px;
+      padding: 5px 14px;
       background: var(--badge-bg);
       border: 1px solid var(--badge-border);
       border-radius: 999px;
       color: var(--coffee-accent);
-      font-size: 0.85rem;
+      font-size: 0.8rem;
       font-weight: 600;
-      margin-bottom: 1.4rem;
+      margin-bottom: 1.1rem;
     }
 
     .hero h1 {
-      font-size: 3.4rem;
-      line-height: 1.15;
-      margin-bottom: 1.2rem;
+      font-size: 2.85rem;
+      line-height: 1.18;
+      margin-bottom: 0.9rem;
+      letter-spacing: -0.03em;
     }
 
     .hero h1 span {
@@ -364,45 +360,97 @@
 
     .hero p {
       color: var(--text-muted);
-      font-size: 1.15rem;
-      max-width: 680px;
-      margin: 0 auto 2rem;
+      font-size: 1.05rem;
+      max-width: 600px;
+      margin: 0 auto 1.7rem;
+      line-height: 1.5;
     }
 
     .hero-ctas {
       display: flex;
       justify-content: center;
-      gap: 1rem;
+      gap: 0.9rem;
       flex-wrap: wrap;
     }
 
     /* =========================================
-       SERVICES (8 Cards)
+       3. END-TO-END CAPABILITIES: SLIDES CAROUSEL
     ========================================= */
-    .services-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-      gap: 1.4rem;
+    .carousel-header-controls {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+      margin-bottom: 1.5rem;
     }
 
-    .service-card {
+    .carousel-btn-group {
+      display: flex;
+      gap: 10px;
+    }
+
+    .slide-arrow-btn {
+      width: 42px;
+      height: 42px;
+      border-radius: 50%;
       background: var(--card-bg);
       border: 1px solid var(--card-border);
-      border-radius: 16px;
-      padding: 1.8rem;
-      transition: all 0.3s ease;
-      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.04);
+      color: var(--text-main);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      transition: all 0.25s ease;
     }
 
-    .service-card:hover {
-      transform: translateY(-4px);
-      border-color: var(--card-hover-border);
+    .slide-arrow-btn:hover {
+      background: var(--coffee-accent);
+      color: #FFF;
+      border-color: var(--coffee-accent);
+      transform: scale(1.06);
+    }
+
+    .slides-viewport {
+      overflow-x: auto;
+      scroll-behavior: smooth;
+      scrollbar-width: none; /* Firefox */
+      -ms-overflow-style: none; /* IE */
+      padding: 10px 4px 20px 4px;
+    }
+
+    .slides-viewport::-webkit-scrollbar {
+      display: none; /* Chrome/Safari */
+    }
+
+    .slides-track {
+      display: flex;
+      gap: 1.4rem;
+      width: max-content;
+    }
+
+    .slide-card {
+      width: 290px;
+      flex-shrink: 0;
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      border-radius: 18px;
+      padding: 2rem 1.6rem;
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.06);
+      transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    .slide-card:hover {
+      transform: translateY(-8px) scale(1.02);
+      border-color: var(--coffee-accent);
+      box-shadow: 0 18px 36px var(--coffee-glow);
     }
 
     .service-icon {
-      width: 42px;
-      height: 42px;
-      border-radius: 10px;
+      width: 44px;
+      height: 44px;
+      border-radius: 12px;
       background: var(--badge-bg);
       border: 1px solid var(--badge-border);
       color: var(--coffee-accent);
@@ -410,6 +458,11 @@
       align-items: center;
       justify-content: center;
       margin-bottom: 1.2rem;
+      transition: transform 0.3s ease;
+    }
+
+    .slide-card:hover .service-icon {
+      transform: rotate(6deg) scale(1.1);
     }
 
     .service-title {
@@ -420,17 +473,18 @@
 
     .service-desc {
       color: var(--text-card-body);
-      font-size: 0.9rem;
+      font-size: 0.88rem;
       line-height: 1.55;
     }
 
     /* =========================================
-       FEATURED PROJECTS
+       4. FEATURED PROJECTS (DYNAMIC MOTION)
     ========================================= */
     .projects-grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-      gap: 2rem;
+      gap: 1.8rem;
+      perspective: 1000px;
     }
 
     .project-card {
@@ -438,23 +492,24 @@
       border: 1px solid var(--card-border);
       border-radius: 18px;
       padding: 2.2rem;
-      transition: all 0.3s ease;
       display: flex;
       flex-direction: column;
       justify-content: space-between;
       box-shadow: 0 10px 28px rgba(0, 0, 0, 0.06);
+      transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
     }
 
     .project-card:hover {
-      transform: translateY(-5px);
-      border-color: var(--card-hover-border);
+      transform: translateY(-8px) scale(1.015);
+      border-color: var(--coffee-accent);
+      box-shadow: 0 20px 45px var(--coffee-glow);
     }
 
     .card-top {
       display: flex;
       justify-content: space-between;
       align-items: center;
-      margin-bottom: 1rem;
+      margin-bottom: 0.9rem;
     }
 
     .project-tag {
@@ -472,15 +527,15 @@
     .project-tech {
       display: flex;
       flex-wrap: wrap;
-      gap: 8px;
-      margin: 1.4rem 0;
+      gap: 7px;
+      margin: 1.2rem 0;
     }
 
     .tech-pill {
       background: var(--input-bg);
       border: 1px solid var(--card-border);
-      font-size: 0.78rem;
-      padding: 4px 11px;
+      font-size: 0.75rem;
+      padding: 3px 10px;
       border-radius: 999px;
       color: var(--text-muted);
     }
@@ -491,15 +546,109 @@
       gap: 8px;
       color: var(--text-main);
       text-decoration: none;
-      font-size: 0.95rem;
+      font-size: 0.92rem;
       font-weight: 600;
       border-top: 1px solid var(--card-border);
-      padding-top: 1.1rem;
-      transition: color 0.2s;
+      padding-top: 1rem;
+      transition: color 0.2s, gap 0.2s;
     }
 
     .project-link-btn:hover {
       color: var(--coffee-accent);
+      gap: 12px;
+    }
+
+    /* =========================================
+       5. OUR 5-STEP PROCESS (HIGHLY ANIMATED PIPELINE)
+    ========================================= */
+    .process-pipeline {
+      position: relative;
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 1.2rem;
+      margin-top: 2rem;
+    }
+
+    /* Connecting Progress Track Line Behind Nodes */
+    .process-pipeline::before {
+      content: '';
+      position: absolute;
+      top: 36px;
+      left: 8%;
+      right: 8%;
+      height: 3px;
+      background: linear-gradient(90deg, rgba(199, 138, 88, 0.2), var(--coffee-accent), rgba(199, 138, 88, 0.2));
+      z-index: 1;
+    }
+
+    .pipeline-node {
+      position: relative;
+      z-index: 2;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      opacity: 0;
+      transform: translateY(30px);
+      transition: all 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    .pipeline-node.node-revealed {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* Glowing Number Indicator Circle */
+    .node-circle {
+      width: 58px;
+      height: 58px;
+      border-radius: 50%;
+      background: var(--card-bg);
+      border: 2px solid var(--coffee-accent);
+      box-shadow: 0 0 20px var(--coffee-glow);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: 'Syne', sans-serif;
+      font-size: 1.35rem;
+      font-weight: 800;
+      color: var(--coffee-accent);
+      margin-bottom: 1.2rem;
+      transition: all 0.3s ease;
+    }
+
+    .pipeline-node:hover .node-circle {
+      background: var(--coffee-accent);
+      color: #FFF;
+      transform: scale(1.15) rotate(10deg);
+      box-shadow: 0 0 28px rgba(199, 138, 88, 0.6);
+    }
+
+    .node-card {
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      border-radius: 16px;
+      padding: 1.4rem 1.1rem;
+      width: 100%;
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.05);
+      transition: all 0.3s ease;
+    }
+
+    .pipeline-node:hover .node-card {
+      border-color: var(--coffee-accent);
+      transform: translateY(-5px);
+    }
+
+    .node-title {
+      font-size: 1.1rem;
+      margin-bottom: 0.4rem;
+      color: var(--text-card-head);
+    }
+
+    .node-desc {
+      color: var(--text-card-body);
+      font-size: 0.84rem;
+      line-height: 1.48;
     }
 
     /* =========================================
@@ -508,26 +657,26 @@
     .case-studies-grid {
       display: grid;
       grid-template-columns: 1fr 1fr;
-      gap: 1.8rem;
+      gap: 1.6rem;
     }
 
     .case-card {
       background: var(--card-bg);
       border: 1px solid var(--card-border);
-      border-radius: 18px;
-      padding: 2rem;
+      border-radius: 16px;
+      padding: 1.8rem;
     }
 
     .case-flow {
       display: flex;
       flex-direction: column;
-      gap: 1.1rem;
-      margin-top: 1.2rem;
+      gap: 0.95rem;
+      margin-top: 1.1rem;
     }
 
     .case-step {
       display: flex;
-      gap: 12px;
+      gap: 10px;
     }
 
     .case-step-label {
@@ -535,61 +684,24 @@
       font-size: 0.78rem;
       text-transform: uppercase;
       color: var(--coffee-accent);
-      min-width: 75px;
+      min-width: 72px;
     }
 
     .case-step-content {
       color: var(--text-card-body);
-      font-size: 0.9rem;
+      font-size: 0.88rem;
     }
 
     /* =========================================
-       PROCESS
-    ========================================= */
-    .process-timeline {
-      display: grid;
-      grid-template-columns: repeat(5, 1fr);
-      gap: 1rem;
-    }
-
-    .process-box {
-      background: var(--card-bg);
-      border: 1px solid var(--card-border);
-      border-radius: 14px;
-      padding: 1.5rem;
-      text-align: center;
-    }
-
-    .process-num {
-      font-family: 'Syne', sans-serif;
-      font-size: 1.6rem;
-      font-weight: 800;
-      color: var(--coffee-accent);
-      margin-bottom: 0.3rem;
-    }
-
-    .process-title {
-      font-size: 1.05rem;
-      margin-bottom: 0.4rem;
-      color: var(--text-card-head);
-    }
-
-    .process-desc {
-      color: var(--text-card-body);
-      font-size: 0.82rem;
-      line-height: 1.45;
-    }
-
-    /* =========================================
-       CONTACT SECTION + DIRECT WHATSAPP
+       CONTACT + DIRECT WHATSAPP
     ========================================= */
     .contact-container {
-      max-width: 680px;
+      max-width: 620px;
       margin: auto;
       background: var(--card-bg);
       border: 1px solid var(--card-border);
-      border-radius: 20px;
-      padding: 2.5rem 2rem;
+      border-radius: 18px;
+      padding: 2.2rem 1.8rem;
     }
 
     .whatsapp-banner {
@@ -597,23 +709,23 @@
       flex-direction: column;
       align-items: center;
       text-align: center;
-      gap: 10px;
+      gap: 12px;
       background: var(--badge-bg);
       border: 1px dashed var(--coffee-accent);
       border-radius: 14px;
-      padding: 1.4rem;
-      margin-bottom: 2rem;
+      padding: 1.25rem;
+      margin-bottom: 1.8rem;
     }
 
     .form-group {
-      margin-bottom: 1.2rem;
+      margin-bottom: 1.1rem;
     }
 
     .form-label {
       display: block;
-      font-size: 0.85rem;
+      font-size: 0.84rem;
       font-weight: 600;
-      margin-bottom: 0.45rem;
+      margin-bottom: 0.4rem;
       color: var(--text-card-head);
     }
 
@@ -622,10 +734,10 @@
       background: var(--input-bg);
       border: 1px solid var(--input-border);
       border-radius: 10px;
-      padding: 0.75rem 1rem;
+      padding: 0.7rem 0.95rem;
       color: var(--text-main);
       font-family: inherit;
-      font-size: 0.92rem;
+      font-size: 0.9rem;
       outline: none;
       transition: border-color 0.2s;
     }
@@ -640,34 +752,34 @@
     .founders-grid {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
-      gap: 1.8rem;
+      gap: 1.6rem;
     }
 
     .founder-card {
       background: var(--card-bg);
       border: 1px solid var(--card-border);
-      border-radius: 18px;
-      padding: 2rem;
+      border-radius: 16px;
+      padding: 1.8rem;
       display: flex;
       flex-direction: column;
       justify-content: space-between;
     }
 
     .founder-role {
-      font-size: 0.8rem;
+      font-size: 0.78rem;
       font-weight: 700;
       text-transform: uppercase;
       letter-spacing: 0.06em;
       color: var(--coffee-accent);
-      margin-bottom: 0.9rem;
+      margin-bottom: 0.8rem;
     }
 
     .founder-contacts {
       border-top: 1px solid var(--card-border);
-      padding-top: 1rem;
+      padding-top: 0.9rem;
       display: flex;
       flex-direction: column;
-      gap: 0.55rem;
+      gap: 0.5rem;
     }
 
     .contact-row {
@@ -675,7 +787,7 @@
       align-items: center;
       gap: 8px;
       color: var(--text-card-body);
-      font-size: 0.85rem;
+      font-size: 0.84rem;
       text-decoration: none;
       transition: color 0.2s;
     }
@@ -690,7 +802,7 @@
     footer {
       background: var(--footer-bg);
       color: #9C948B;
-      padding: 3.5rem 0 2rem;
+      padding: 3rem 0 1.8rem;
       border-top: 1px solid rgba(255,255,255,0.08);
     }
 
@@ -700,12 +812,13 @@
       align-items: center;
       flex-wrap: wrap;
       gap: 1.2rem;
-      margin-bottom: 2rem;
+      margin-bottom: 1.8rem;
     }
 
     .footer-socials {
       display: flex;
-      gap: 1.2rem;
+      gap: 1.1rem;
+      flex-wrap: wrap;
     }
 
     .footer-social-btn {
@@ -714,7 +827,7 @@
       display: flex;
       align-items: center;
       gap: 6px;
-      font-size: 0.88rem;
+      font-size: 0.86rem;
       font-weight: 500;
       transition: color 0.2s;
     }
@@ -725,20 +838,27 @@
 
     /* Responsive */
     @media (max-width: 992px) {
-      .process-timeline { grid-template-columns: 1fr; }
+      .process-pipeline { 
+        grid-template-columns: 1fr; 
+        gap: 2rem;
+      }
+      .process-pipeline::before {
+        display: none; /* hidden on mobile vertical list */
+      }
       .founders-grid { grid-template-columns: 1fr; }
       .case-studies-grid { grid-template-columns: 1fr; }
       
       .nav-links { display: none; }
       .mobile-menu-btn { display: flex; }
 
-      .hero h1 { font-size: 2.6rem; }
+      .hero h1 { font-size: 2.15rem; }
+      .hero { padding: 2.4rem 0 1.8rem; }
     }
   </style>
 </head>
 <body>
 
-  <!-- ================= NAVBAR (SOLID FLOATING BAR) ================= -->
+  <!-- ================= NAVBAR ================= -->
   <header>
     <div class="container nav-wrapper">
       <a href="#" class="brand-logo-container">
@@ -753,7 +873,7 @@
       <!-- Desktop Nav -->
       <div class="nav-links">
         <a href="#home">Home</a>
-        <a href="#services">Services</a>
+        <a href="#services">Capabilities</a>
         <a href="#projects">Projects</a>
         <a href="#process">Process</a>
         <a href="#about">About</a>
@@ -772,10 +892,10 @@
       </div>
     </div>
 
-    <!-- Mobile Navigation Drawer -->
+    <!-- Mobile Drawer -->
     <div class="mobile-nav-drawer" id="mobileNavDrawer">
       <a href="#home" class="mobile-link">Home</a>
-      <a href="#services" class="mobile-link">Services</a>
+      <a href="#services" class="mobile-link">Capabilities</a>
       <a href="#projects" class="mobile-link">Projects</a>
       <a href="#process" class="mobile-link">Process</a>
       <a href="#about" class="mobile-link">About Founders</a>
@@ -787,68 +907,107 @@
     <!-- ================= HERO ================= -->
     <section id="home" class="hero container">
       <div class="hero-badge">
-        <i data-lucide="sparkles" style="width: 14px;"></i> Direct Founder Involvement
+        <i data-lucide="sparkles" style="width: 13px;"></i> Direct Founder Involvement
       </div>
       <h1>Architecting High-Impact <span>Digital Products</span></h1>
-      <p>Masterclass full-stack engineering, high-converting product UI/UX design, and scalable web platforms custom-built for modern business growth.</p>
+      <p>Modern web apps, luxury catalogs & custom software engineered for rapid business growth.</p>
       <div class="hero-ctas">
-        <a href="#contact" class="btn-primary">Start a Project <i data-lucide="arrow-right" style="width:15px;"></i></a>
+        <a href="#contact" class="btn-primary">Start a Project <i data-lucide="arrow-right" style="width:14px;"></i></a>
         <a href="#projects" class="btn-secondary">View Our Work</a>
       </div>
     </section>
 
-    <!-- ================= SERVICES ================= -->
+    <!-- ================= CAPABILITIES (SLIDESHOW / CAROUSEL) ================= -->
     <section id="services" class="section container">
-      <h2 class="section-title">End-to-End Capabilities</h2>
-      <p class="section-sub">Comprehensive digital craft from high-performance code to polished design systems.</p>
-
-      <div class="services-grid">
-        <div class="service-card">
-          <div class="service-icon"><i data-lucide="globe"></i></div>
-          <h3 class="service-title">Full-Stack Web Development</h3>
-          <p class="service-desc">Scalable, responsive web applications engineered using modern frontend frameworks and robust backend architectures.</p>
+      <div class="carousel-header-controls">
+        <div>
+          <h2 class="section-title" style="text-align: left; margin-bottom: 0.2rem;">End-to-End Capabilities</h2>
+          <p style="color: var(--text-muted); font-size: 0.95rem;">Swipe or use controls to browse our full-stack engineering specializations.</p>
         </div>
-
-        <div class="service-card">
-          <div class="service-icon"><i data-lucide="shopping-bag"></i></div>
-          <h3 class="service-title">E-Commerce & Digital Catalogs</h3>
-          <p class="service-desc">Custom luxury catalogs, seamless inventory showcases, and checkout workflows tailored for maximum conversion.</p>
+        <div class="carousel-btn-group">
+          <button class="slide-arrow-btn" id="prevSlide" aria-label="Previous Slide">
+            <i data-lucide="chevron-left" style="width: 20px;"></i>
+          </button>
+          <button class="slide-arrow-btn" id="nextSlide" aria-label="Next Slide">
+            <i data-lucide="chevron-right" style="width: 20px;"></i>
+          </button>
         </div>
+      </div>
 
-        <div class="service-card">
-          <div class="service-icon"><i data-lucide="palette"></i></div>
-          <h3 class="service-title">UI/UX & Design Systems</h3>
-          <p class="service-desc">User-centric digital interfaces, scalable typography systems, interactive prototypes, and design tokens.</p>
-        </div>
+      <!-- Horizontal Scroll Slides Viewport -->
+      <div class="slides-viewport" id="slidesViewport">
+        <div class="slides-track">
+          <!-- Slide 1 -->
+          <div class="slide-card">
+            <div class="service-icon"><i data-lucide="globe"></i></div>
+            <div>
+              <h3 class="service-title">Full-Stack Web Apps</h3>
+              <p class="service-desc">Scalable, responsive web applications engineered using modern frontend frameworks and robust backend architectures.</p>
+            </div>
+          </div>
 
-        <div class="service-card">
-          <div class="service-icon"><i data-lucide="database"></i></div>
-          <h3 class="service-title">Enterprise Software & ERP</h3>
-          <p class="service-desc">Workflow automation, internal management portals, and institutional software tailored for operational speed.</p>
-        </div>
+          <!-- Slide 2 -->
+          <div class="slide-card">
+            <div class="service-icon"><i data-lucide="shopping-bag"></i></div>
+            <div>
+              <h3 class="service-title">Luxury Catalogs & Storefronts</h3>
+              <p class="service-desc">High-conversion digital catalogs and interactive product showcases tailored for gold, diamond, and luxury goods.</p>
+            </div>
+          </div>
 
-        <div class="service-card">
-          <div class="service-icon"><i data-lucide="zap"></i></div>
-          <h3 class="service-title">Performance Optimization</h3>
-          <p class="service-desc">Auditing, asset minification, CDN setups, and database optimization for ultra-low latency.</p>
-        </div>
+          <!-- Slide 3 -->
+          <div class="slide-card">
+            <div class="service-icon"><i data-lucide="palette"></i></div>
+            <div>
+              <h3 class="service-title">UI/UX & Design Systems</h3>
+              <p class="service-desc">Bespoke typography, smooth micro-interactions, responsive mobile design, and reusable UI tokens.</p>
+            </div>
+          </div>
 
-        <div class="service-card">
-          <div class="service-icon"><i data-lucide="cloud"></i></div>
-          <h3 class="service-title">Cloud Deployment & CI/CD</h3>
-          <p class="service-desc">Continuous deployment pipelines, automated zero-downtime testing, and global edge deployments.</p>
-        </div>
+          <!-- Slide 4 -->
+          <div class="slide-card">
+            <div class="service-icon"><i data-lucide="database"></i></div>
+            <div>
+              <h3 class="service-title">Enterprise Software & ERP</h3>
+              <p class="service-desc">Institutional dashboards, student management, and internal business logistics automation.</p>
+            </div>
+          </div>
 
-        <div class="service-card">
-          <div class="service-icon"><i data-lucide="smartphone"></i></div>
-          <h3 class="service-title">Mobile-First Progressive Apps</h3>
-          <p class="service-desc">Fast, responsive experiences engineered for smartphones, low-bandwidth scenarios, and offline readiness.</p>
-        </div>
+          <!-- Slide 5 -->
+          <div class="slide-card">
+            <div class="service-icon"><i data-lucide="zap"></i></div>
+            <div>
+              <h3 class="service-title">Speed & Performance</h3>
+              <p class="service-desc">Sub-second page load times, image compression pipelines, and database query optimizations.</p>
+            </div>
+          </div>
 
-        <div class="service-card">
-          <div class="service-icon"><i data-lucide="headphones"></i></div>
-          <h3 class="service-title">Dedicated Technical Support</h3>
-          <p class="service-desc">Ongoing maintenance, security patches, infrastructure upgrades, and architectural evolution.</p>
+          <!-- Slide 6 -->
+          <div class="slide-card">
+            <div class="service-icon"><i data-lucide="cloud"></i></div>
+            <div>
+              <h3 class="service-title">Cloud Deployment & CI/CD</h3>
+              <p class="service-desc">Zero-downtime automated workflows deployed directly across edge global networks.</p>
+            </div>
+          </div>
+
+          <!-- Slide 7 -->
+          <div class="slide-card">
+            <div class="service-icon"><i data-lucide="smartphone"></i></div>
+            <div>
+              <h3 class="service-title">Mobile PWA Development</h3>
+              <p class="service-desc">Progressive web apps delivering native app-like fluidity directly on mobile browsers.</p>
+            </div>
+          </div>
+
+          <!-- Slide 8 -->
+          <div class="slide-card">
+            <div class="service-icon"><i data-lucide="headphones"></i></div>
+            <div>
+              <h3 class="service-title">Architectural Support</h3>
+              <p class="service-desc">Continuous monitoring, security maintenance, and iterative development alongside growth.</p>
+            </div>
+          </div>
         </div>
       </div>
     </section>
@@ -866,8 +1025,8 @@
               <span class="project-tag">● Live Client Platform</span>
               <i data-lucide="gem" style="color: var(--coffee-accent); width:20px;"></i>
             </div>
-            <h3 style="font-size: 1.45rem; margin-bottom: 0.6rem; color: var(--text-card-head);">Ram Brahmmam Jewelleries</h3>
-            <p style="color: var(--text-card-body); font-size: 0.94rem;">A bespoke luxury digital showroom crafted for premium traditional and modern jewelry collections. Features rapid filtering, high-resolution visual storytelling, and instant client inquiries.</p>
+            <h3 style="font-size: 1.4rem; margin-bottom: 0.5rem; color: var(--text-card-head);">Ram Brahmmam Jewelleries</h3>
+            <p style="color: var(--text-card-body); font-size: 0.92rem;">A bespoke luxury digital showroom crafted for premium traditional and modern jewelry collections. Features rapid filtering, high-resolution visual storytelling, and instant client inquiries.</p>
             <div class="project-tech">
               <span class="tech-pill">Luxury Catalog</span>
               <span class="tech-pill">Vercel Edge</span>
@@ -875,7 +1034,7 @@
             </div>
           </div>
           <a href="https://ram-brahmmam-jewelleries.vercel.app/" target="_blank" rel="noopener noreferrer" class="project-link-btn">
-            Visit Live Website <i data-lucide="external-link" style="width:16px;"></i>
+            Visit Live Website <i data-lucide="external-link" style="width:15px;"></i>
           </a>
         </div>
 
@@ -886,8 +1045,8 @@
               <span class="project-tag">● Live Client Platform</span>
               <i data-lucide="graduation-cap" style="color: var(--coffee-accent); width:20px;"></i>
             </div>
-            <h3 style="font-size: 1.45rem; margin-bottom: 0.6rem; color: var(--text-card-head);">Wonder Kids School</h3>
-            <p style="color: var(--text-card-body); font-size: 0.94rem;">An engaging, interactive preschool web portal showcasing educational curriculums, event galleries, and structured admissions touchpoints for prospective parents.</p>
+            <h3 style="font-size: 1.4rem; margin-bottom: 0.5rem; color: var(--text-card-head);">Wonder Kids School</h3>
+            <p style="color: var(--text-card-body); font-size: 0.92rem;">An engaging, interactive preschool web portal showcasing educational curriculums, event galleries, and structured admissions touchpoints for prospective parents.</p>
             <div class="project-tech">
               <span class="tech-pill">Education Portal</span>
               <span class="tech-pill">Admissions Funnel</span>
@@ -895,8 +1054,61 @@
             </div>
           </div>
           <a href="https://wonder-kids-website-vercel.vercel.app/" target="_blank" rel="noopener noreferrer" class="project-link-btn">
-            Visit Live Website <i data-lucide="external-link" style="width:16px;"></i>
+            Visit Live Website <i data-lucide="external-link" style="width:15px;"></i>
           </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= 5-STEP PROCESS: ANIMATED PIPELINE ================= -->
+    <section id="process" class="section container">
+      <h2 class="section-title">Our 5-Step Process</h2>
+      <p class="section-sub">A structured, high-precision roadmap from blueprint to production deployment.</p>
+
+      <div class="process-pipeline" id="pipelineTrack">
+        <!-- Step 1 -->
+        <div class="pipeline-node">
+          <div class="node-circle">01</div>
+          <div class="node-card">
+            <h4 class="node-title">Discover</h4>
+            <p class="node-desc">Deep-dive discovery session to align on target audience, branding, and technical KPIs.</p>
+          </div>
+        </div>
+
+        <!-- Step 2 -->
+        <div class="pipeline-node">
+          <div class="node-circle">02</div>
+          <div class="node-card">
+            <h4 class="node-title">Design</h4>
+            <p class="node-desc">Crafting tailored UI layouts, mobile prototypes, and aesthetic typography systems.</p>
+          </div>
+        </div>
+
+        <!-- Step 3 -->
+        <div class="pipeline-node">
+          <div class="node-circle">03</div>
+          <div class="node-card">
+            <h4 class="node-title">Develop</h4>
+            <p class="node-desc">Writing performant, clean code with responsive modern architecture.</p>
+          </div>
+        </div>
+
+        <!-- Step 4 -->
+        <div class="pipeline-node">
+          <div class="node-circle">04</div>
+          <div class="node-card">
+            <h4 class="node-title">Deploy</h4>
+            <p class="node-desc">Speed audits, edge network deployment, SSL encryption, and live verification.</p>
+          </div>
+        </div>
+
+        <!-- Step 5 -->
+        <div class="pipeline-node">
+          <div class="node-circle">05</div>
+          <div class="node-card">
+            <h4 class="node-title">Support</h4>
+            <p class="node-desc">Continuous post-launch architectural updates and client scaling guidance.</p>
+          </div>
         </div>
       </div>
     </section>
@@ -908,7 +1120,7 @@
 
       <div class="case-studies-grid">
         <div class="case-card">
-          <h3 style="font-size: 1.3rem; color: var(--text-card-head);">Ram Brahmmam Jewelleries</h3>
+          <h3 style="font-size: 1.25rem; color: var(--text-card-head);">Ram Brahmmam Jewelleries</h3>
           <div class="case-flow">
             <div class="case-step">
               <span class="case-step-label">Problem</span>
@@ -930,7 +1142,7 @@
         </div>
 
         <div class="case-card">
-          <h3 style="font-size: 1.3rem; color: var(--text-card-head);">Wonder Kids School</h3>
+          <h3 style="font-size: 1.25rem; color: var(--text-card-head);">Wonder Kids School</h3>
           <div class="case-flow">
             <div class="case-step">
               <span class="case-step-label">Problem</span>
@@ -953,51 +1165,17 @@
       </div>
     </section>
 
-    <!-- ================= PROCESS ================= -->
-    <section id="process" class="section container">
-      <h2 class="section-title">Our 5-Step Process</h2>
-      <p class="section-sub">A structured, transparent engineering methodology from day one to launch.</p>
-
-      <div class="process-timeline">
-        <div class="process-box">
-          <div class="process-num">01</div>
-          <h4 class="process-title">Discover</h4>
-          <p class="process-desc">Discovery session to align on product goals, audience, and KPIs.</p>
-        </div>
-        <div class="process-box">
-          <div class="process-num">02</div>
-          <h4 class="process-title">Design</h4>
-          <p class="process-desc">Tailored design prototypes and mobile-responsive wireframes.</p>
-        </div>
-        <div class="process-box">
-          <div class="process-num">03</div>
-          <h4 class="process-title">Develop</h4>
-          <p class="process-desc">Clean, maintainable, and high-performance production code.</p>
-        </div>
-        <div class="process-box">
-          <div class="process-num">04</div>
-          <h4 class="process-title">Deploy</h4>
-          <p class="process-desc">Cloud setup, speed audits, security, and live domain configuration.</p>
-        </div>
-        <div class="process-box">
-          <div class="process-num">05</div>
-          <h4 class="process-title">Support</h4>
-          <p class="process-desc">Continuous monitoring, architectural scaling, and maintenance.</p>
-        </div>
-      </div>
-    </section>
-
-    <!-- ================= START A PROJECT + DIRECT WHATSAPP ================= -->
+    <!-- ================= START A PROJECT + SINGLE-LINE WHATSAPP ================= -->
     <section id="contact" class="section container">
       <h2 class="section-title">Start a Project</h2>
       <p class="section-sub">Ready to build or modernize your platform? Connect with us directly or drop a note.</p>
 
       <div class="contact-container">
-        <!-- Direct WhatsApp Chat Option -->
+        <!-- Single-Line WhatsApp CTA -->
         <div class="whatsapp-banner">
-          <p style="font-weight: 600; color: var(--text-card-head); font-size: 1rem;">Prefer instant messaging? Chat with the founders directly:</p>
+          <p style="font-weight: 600; color: var(--text-card-head); font-size: 0.95rem;">Prefer instant messaging? Chat with the founders directly:</p>
           <a href="https://wa.me/918897798251?text=Hello%20snatak.dev%20team,%20I%20would%20like%20to%20discuss%20a%20project." target="_blank" rel="noopener noreferrer" class="btn-whatsapp">
-            <i data-lucide="message-circle" style="width: 18px;"></i> Chat on WhatsApp (+91 88977 98251)
+            <i data-lucide="message-circle" style="width: 17px;"></i> Chat on WhatsApp (+91 88977 98251)
           </a>
         </div>
 
@@ -1027,8 +1205,8 @@
             <textarea name="details" rows="4" class="form-textarea" placeholder="Describe your timeline, targets, and features..." required></textarea>
           </div>
 
-          <button type="submit" class="btn-primary" style="width: 100%; justify-content: center; padding: 0.85rem;">
-            Send Inquiry Directly <i data-lucide="send" style="width: 16px;"></i>
+          <button type="submit" class="btn-primary" style="width: 100%; justify-content: center; padding: 0.8rem;">
+            Send Inquiry Directly <i data-lucide="send" style="width: 15px;"></i>
           </button>
         </form>
       </div>
@@ -1043,9 +1221,9 @@
         <!-- Dinesh -->
         <div class="founder-card">
           <div>
-            <h3 style="font-size: 1.35rem; color: var(--text-card-head);">Budidha Dinesh Goud</h3>
+            <h3 style="font-size: 1.3rem; color: var(--text-card-head);">Budidha Dinesh Goud</h3>
             <div class="founder-role">Lead Tech Architect & Growth</div>
-            <p style="color: var(--text-card-body); font-size: 0.9rem; margin-bottom: 1.4rem;">Full-stack engineering, web performance optimization, and client solution strategy.</p>
+            <p style="color: var(--text-card-body); font-size: 0.88rem; margin-bottom: 1.2rem;">Full-stack engineering, web performance optimization, and client solution strategy.</p>
           </div>
           <div class="founder-contacts">
             <a href="mailto:dineshgoudb@gmail.com" class="contact-row">
@@ -1060,9 +1238,9 @@
         <!-- Sai Pranith -->
         <div class="founder-card">
           <div>
-            <h3 style="font-size: 1.35rem; color: var(--text-card-head);">M. Sai Pranith</h3>
+            <h3 style="font-size: 1.3rem; color: var(--text-card-head);">M. Sai Pranith</h3>
             <div class="founder-role">UI/UX & Product Lead</div>
-            <p style="color: var(--text-card-body); font-size: 0.9rem; margin-bottom: 1.4rem;">Product design systems, digital catalog aesthetics, and responsive layout design.</p>
+            <p style="color: var(--text-card-body); font-size: 0.88rem; margin-bottom: 1.2rem;">Product design systems, digital catalog aesthetics, and responsive layout design.</p>
           </div>
           <div class="founder-contacts">
             <a href="mailto:saipranith876@gmail.com" class="contact-row">
@@ -1077,9 +1255,9 @@
         <!-- Chandra Shekar -->
         <div class="founder-card">
           <div>
-            <h3 style="font-size: 1.35rem; color: var(--text-card-head);">Chelluri Chandra Shekar</h3>
+            <h3 style="font-size: 1.3rem; color: var(--text-card-head);">Chelluri Chandra Shekar</h3>
             <div class="founder-role">Design & Operations Lead</div>
-            <p style="color: var(--text-card-body); font-size: 0.9rem; margin-bottom: 1.4rem;">Interactive UI development, project delivery schedules, and client relations.</p>
+            <p style="color: var(--text-card-body); font-size: 0.88rem; margin-bottom: 1.2rem;">Interactive UI development, project delivery schedules, and client relations.</p>
           </div>
           <div class="founder-contacts">
             <a href="mailto:chellurichandu13@gmail.com" class="contact-row">
@@ -1117,17 +1295,17 @@
           </a>
         </div>
       </div>
-      <p style="text-align: center; font-size: 0.86rem; border-top: 1px solid rgba(255,255,255,0.06); padding-top: 1.4rem;">
+      <p style="text-align: center; font-size: 0.84rem; border-top: 1px solid rgba(255,255,255,0.06); padding-top: 1.3rem;">
         © 2026 <strong>snātak.dev</strong>. High-Performance Software Architecture & Modern Digital Craft.
       </p>
     </div>
   </footer>
 
-  <!-- Scripts -->
+  <!-- Scripts: Icons, Carousel Slider, Staggered Roadmap -->
   <script>
     lucide.createIcons();
 
-    // Theme Toggle Logic
+    // 1. Theme Toggle
     const themeToggleBtn = document.getElementById('themeToggleBtn');
     const themeIcon = document.getElementById('themeIcon');
     const root = document.documentElement;
@@ -1152,7 +1330,7 @@
       lucide.createIcons();
     }
 
-    // Mobile Drawer Navigation Toggle
+    // 2. Mobile Drawer Navigation Toggle
     const mobileMenuBtn = document.getElementById('mobileMenuBtn');
     const mobileNavDrawer = document.getElementById('mobileNavDrawer');
     const menuIcon = document.getElementById('menuIcon');
@@ -1174,6 +1352,40 @@
         lucide.createIcons();
       });
     });
+
+    // 3. Capabilities Slides Carousel Controls
+    const slidesViewport = document.getElementById('slidesViewport');
+    const prevSlide = document.getElementById('prevSlide');
+    const nextSlide = document.getElementById('nextSlide');
+
+    if (prevSlide && nextSlide && slidesViewport) {
+      prevSlide.addEventListener('click', () => {
+        slidesViewport.scrollBy({ left: -310, behavior: 'smooth' });
+      });
+      nextSlide.addEventListener('click', () => {
+        slidesViewport.scrollBy({ left: 310, behavior: 'smooth' });
+      });
+    }
+
+    // 4. Animated 5-Step Process Pipeline Observer
+    const pipelineNodes = document.querySelectorAll('.pipeline-node');
+    const pipelineObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          pipelineNodes.forEach((node, index) => {
+            setTimeout(() => {
+              node.classList.add('node-revealed');
+            }, index * 160); // 160ms cinematic reveal stagger
+          });
+          pipelineObserver.disconnect();
+        }
+      });
+    }, { threshold: 0.2 });
+
+    const pipelineTrack = document.getElementById('pipelineTrack');
+    if (pipelineTrack) {
+      pipelineObserver.observe(pipelineTrack);
+    }
   </script>
 </body>
 </html>
